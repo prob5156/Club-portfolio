@@ -25,7 +25,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section id="home" class="hero-section">
         <div class="hero-content">
             <h2>Welcome to Dhrupodi</h2>
             <p>Celebrating the grace and tradition of classical dance at KUET</p>
@@ -34,7 +34,7 @@
     </section>
 
     <!-- Community Showcase Section -->
-    <section class="community-showcase">
+    <section id="about-us" class="community-showcase">
         <div class="community-overlay">
             <h2>Our Passionate Community</h2>
             <p>Meet the talented dancers and artists who bring Dhrupodi to life</p>
@@ -42,7 +42,7 @@
     </section>
 
     <!-- Feature Cards Section -->
-    <div class="content">
+    <div id="gallery" class="content">
         <div class="features-container">
             <div class="feature-card">
                 <div class="card-icon">🎭</div>
@@ -62,7 +62,7 @@
         </div>
 
         <!-- Upcoming Events Section -->
-        <section class="events-section">
+        <section id="events" class="events-section">
             <h2>Upcoming Events</h2>
             <div class="events-list">
                 <div class="event-card">
@@ -90,8 +90,32 @@
         </section>
     </div>
 
+    <!-- Members Section -->
+    <section id="members" class="members-section">
+        <div class="content">
+            <h2 style="text-align: center; color: #1a472a; margin-bottom: 2rem;">Our Members</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Our talented dancers and directors</p>
+            <!-- Member profiles will be added here -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="content">
+            <h2 style="text-align: center; color: #1a472a; margin-bottom: 2rem;">Get In Touch</h2>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="footer" class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>About Dhrupodi</h4>
@@ -116,6 +140,51 @@
             <p>&copy; 2026 Dhrupodi Dancers' Association of KUET. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Navigation button functionality
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const ctaBtn = document.querySelector('.cta-btn');
+        
+        navButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                const sections = ['home', 'about-us', 'gallery', 'events', 'members', 'contact'];
+                const targetSection = document.getElementById(sections[index]);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Join Us button
+        if (ctaBtn) {
+            ctaBtn.addEventListener('click', function() {
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+        
+        // Contact form submission
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your interest! We will get back to you soon.');
+                this.reset();
+            });
+        }
+        
+        // Footer links
+        const footerLinks = document.querySelectorAll('.footer-section a');
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') {
+                    e.preventDefault();
+                    document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
