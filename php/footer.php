@@ -25,7 +25,7 @@
         </div>
     </footer>
 
-    <script src="../js/script.js"></script>
+    <script src="/Dhrupodi/js/script.js?v=2"></script>
 
 </body>
 </html>

@@ -6,11 +6,17 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
+    /* Full-page background image */
+    background-image: url('../images/Bg1.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
 }
 
 .navbar {
-    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+    background: rgba(8, 45, 28, 0.75);
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
@@ -96,11 +102,12 @@ body {
 }
 
 .hero-section {
-    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+    background: rgba(0,0,0,0.45);
     color: white;
     padding: 5rem 2rem;
     text-align: center;
     margin-bottom: 3rem;
+    border-radius: 8px;
 }
 
 .hero-content h2 {
@@ -142,7 +149,7 @@ body {
 }
 
 .feature-card {
-    background: white;
+    background: rgba(255,255,255,0.95);
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
@@ -237,7 +244,7 @@ body {
 
 /* Footer */
 .footer {
-    background: #1a472a;
+    background: rgba(8, 45, 28, 0.92);
     color: white;
     padding: 3rem 2rem 1rem;
     margin-top: 4rem;
@@ -293,11 +300,11 @@ body {
 
 /* Members Section */
 .members-section {
-    background: white;
+    background: rgba(255,255,255,0.95);
     padding: 3rem 2rem;
     margin: 3rem 0;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 
 .members-section h2 {
@@ -306,9 +313,11 @@ body {
 
 /* Contact Section */
 .contact-section {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    background: rgba(255,255,255,0.9);
     padding: 3rem 2rem;
     margin: 3rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
 .contact-section h2 {
