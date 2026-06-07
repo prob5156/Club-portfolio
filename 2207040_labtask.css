@@ -65,6 +65,8 @@ body {
     font-size: 0.95rem;
     transition: all 0.3s ease;
     font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .nav-btn:hover {
