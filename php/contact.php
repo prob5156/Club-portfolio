@@ -1,8 +1,8 @@
 <?php
 $pageTitle = "Contact - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Get in touch with Dhrupodi Dancers' Association of KUET. Send us a message or find our contact details.";
-require_once 'includes/header.php';
-require_once 'includes/navbar.php';
+require_once 'header.php';
+require_once 'navbar.php';
 ?>
 
     <!-- Contact Section -->
@@ -20,4 +20,4 @@ require_once 'includes/navbar.php';
         </div>
     </section>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once 'footer.php'; ?>

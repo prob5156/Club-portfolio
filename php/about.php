@@ -1,8 +1,8 @@
 <?php
 $pageTitle = "About Us - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Learn about Dhrupodi Dancers' Association of KUET - our passionate community dedicated to classical dance and cultural heritage.";
-require_once 'includes/header.php';
-require_once 'includes/navbar.php';
+require_once 'header.php';
+require_once 'navbar.php';
 ?>
 
     <!-- Community Showcase Section -->
@@ -34,4 +34,4 @@ require_once 'includes/navbar.php';
         </div>
     </div>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once 'footer.php'; ?>

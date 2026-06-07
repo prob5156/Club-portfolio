@@ -1,8 +1,8 @@
 <?php
 $pageTitle = "Events - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Upcoming events and performances by Dhrupodi Dancers' Association of KUET - workshops, recitals, and cultural programs.";
-require_once 'includes/header.php';
-require_once 'includes/navbar.php';
+require_once 'header.php';
+require_once 'navbar.php';
 ?>
 
     <!-- Upcoming Events Section -->
@@ -35,4 +35,4 @@ require_once 'includes/navbar.php';
         </section>
     </div>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once 'footer.php'; ?>

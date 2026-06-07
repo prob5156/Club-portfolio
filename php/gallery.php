@@ -1,8 +1,8 @@
 <?php
 $pageTitle = "Gallery - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Browse the gallery of Dhrupodi Dancers' Association of KUET - classical dance performances, events, and community moments.";
-require_once 'includes/header.php';
-require_once 'includes/navbar.php';
+require_once 'header.php';
+require_once 'navbar.php';
 ?>
 
     <!-- Gallery Section -->
@@ -28,4 +28,4 @@ require_once 'includes/navbar.php';
         </div>
     </div>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once 'footer.php'; ?>

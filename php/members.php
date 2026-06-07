@@ -1,8 +1,8 @@
 <?php
 $pageTitle = "Members - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Meet the talented dancers and directors of Dhrupodi Dancers' Association of KUET.";
-require_once 'includes/header.php';
-require_once 'includes/navbar.php';
+require_once 'header.php';
+require_once 'navbar.php';
 ?>
 
     <!-- Members Section -->
@@ -14,4 +14,4 @@ require_once 'includes/navbar.php';
         </div>
     </section>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once 'footer.php'; ?>
