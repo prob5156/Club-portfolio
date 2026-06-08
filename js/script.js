@@ -24,6 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navbar.classList.contains('nav-open')) {
+                closeMenu();
+                toggleButton.focus();
+            }
+        });
+
         window.addEventListener('resize', function() {
             if (window.innerWidth > 992) {
                 closeMenu();

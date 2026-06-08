@@ -11,13 +11,13 @@
         'contact.php' => 'Contact',
     ];
     ?>
-    <nav class="navbar" data-navbar>
+    <nav class="navbar" data-navbar aria-label="Primary navigation">
         <div class="logo-section">
             <img src="https://graph.facebook.com/dhrupodidancerskuet/picture?type=large" alt="Dhrupodi Logo" class="navbar-logo">
             <h1 class="site-title">Dhrupodi Dancers'<br><span class="subtitle">Association of KUET</span></h1>
         </div>
 
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
             <span class="nav-toggle-lines" aria-hidden="true">
                 <span></span>
                 <span></span>
@@ -34,5 +34,5 @@
             <?php endforeach; ?>
         </div>
 
-        <input type="text" class="search-bar" placeholder="Search events...">
+        <input type="text" class="search-bar" placeholder="Search events..." aria-label="Search events">
     </nav>
