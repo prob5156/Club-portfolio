@@ -21,29 +21,6 @@ body {
     margin: 0 auto;
 }
 
-.hero-section {
-    position: relative;
-    height: 100vh;
-    min-height: 680px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-}
-
-.scroll-text { font-size: 0.9rem; opacity: 0.95; }
-
-/* reveal active state */
-.hero-animate .reveal { transform: translateY(0); opacity: 1; }
-.hero-animate .brand { transform: translateY(0); opacity: 1; }
-
-@media (max-width: 880px) {
-    .hero-section { min-height: 560px; }
-    .hero-ctas { flex-direction: column; gap: 0.75rem; }
-}
-
 /* Feature Cards */
 .features-container {
     display: grid;

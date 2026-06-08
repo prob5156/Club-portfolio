@@ -9,7 +9,7 @@ require_once 'php/navbar.php';
 	<!-- Contact Section -->
 	<section id="contact" class="contact-section">
 		<div class="content">
-			<h2 style="text-align: center; color: #1a472a; margin-bottom: 2rem;">Get In Touch</h2>
+			<h2 class="page-title">Get In Touch</h2>
 			<div class="contact-form">
 				<form>
 					<input type="text" placeholder="Your Name" required>

@@ -1,1 +1,11 @@
-/* Page-specific stylesheet for the Members page. Intentionally left blank to preserve the current appearance. */
+.page-title {
+	text-align: center;
+	color: #1a472a;
+	margin-bottom: 2rem;
+}
+
+.page-intro {
+	text-align: center;
+	color: #666;
+	margin-bottom: 2rem;
+}

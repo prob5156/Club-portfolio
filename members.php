@@ -9,8 +9,8 @@ require_once 'php/navbar.php';
 	<!-- Members Section -->
 	<section id="members" class="members-section">
 		<div class="content">
-			<h2 style="text-align: center; color: #1a472a; margin-bottom: 2rem;">Our Members</h2>
-			<p style="text-align: center; color: #666; margin-bottom: 2rem;">Our talented dancers and directors</p>
+			<h2 class="page-title">Our Members</h2>
+			<p class="page-intro">Our talented dancers and directors</p>
 			<!-- Member profiles will be added here -->
 		</div>
 	</section>

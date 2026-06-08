@@ -88,8 +88,8 @@ require_once 'php/navbar.php';
 	<!-- Members Section -->
 	<section id="members" class="members-section">
 		<div class="content">
-			<h2 style="text-align: center; color: #1a472a; margin-bottom: 2rem;">Our Members</h2>
-			<p style="text-align: center; color: #666; margin-bottom: 2rem;">Our talented dancers and directors</p>
+			<h2>Our Members</h2>
+			<p>Our talented dancers and directors</p>
 			<!-- Member profiles will be added here -->
 		</div>
 	</section>
@@ -97,7 +97,7 @@ require_once 'php/navbar.php';
 	<!-- Contact Section -->
 	<section id="contact" class="contact-section">
 		<div class="content">
-			<h2 style="text-align: center; color: #1a472a; margin-bottom: 2rem;">Get In Touch</h2>
+			<h2>Get In Touch</h2>
 			<div class="contact-form">
 				<form>
 					<input type="text" placeholder="Your Name" required>

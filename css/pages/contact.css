@@ -1,1 +1,5 @@
-/* Page-specific stylesheet for the Contact page. Intentionally left blank to preserve the current appearance. */
+.page-title {
+	text-align: center;
+	color: #1a472a;
+	margin-bottom: 2rem;
+}

@@ -8,8 +8,8 @@ require_once 'php/navbar.php';
 
 	<!-- Gallery Section -->
 	<div id="gallery" class="content">
-		<h2 style="text-align: center; color: #1a472a; margin-bottom: 2rem;">Our Gallery</h2>
-		<p style="text-align: center; color: #666; margin-bottom: 2rem;">Moments captured from our performances and events</p>
+		<h2 class="page-title">Our Gallery</h2>
+		<p class="page-intro">Moments captured from our performances and events</p>
 		<div class="features-container">
 			<div class="feature-card">
 				<div class="card-icon">🎭</div>
