@@ -72,4 +72,53 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
         });
     }
+
+    // Hero animations, particles and scroll indicator
+    const hero = document.querySelector('.hero-section');
+    const particlesContainer = document.querySelector('.hero-particles');
+    const scrollBtn = document.querySelector('.scroll-down');
+
+    if (hero) {
+        // animate headline reveal
+        setTimeout(() => hero.classList.add('hero-animate'), 180);
+
+        // spawn light particles
+        if (particlesContainer) {
+            const spawn = (count = 18) => {
+                for (let i = 0; i < count; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    const size = Math.round(6 + Math.random() * 28);
+                    p.style.width = size + 'px';
+                    p.style.height = size + 'px';
+                    p.style.left = Math.random() * 100 + '%';
+                    // start a little below center for natural float
+                    p.style.top = 60 + Math.random() * 40 + '%';
+                    const dur = 10 + Math.random() * 18;
+                    p.style.animationDuration = dur + 's';
+                    p.style.animationDelay = (Math.random() * 6) + 's';
+                    p.style.opacity = (0.04 + Math.random() * 0.12).toFixed(2);
+                    particlesContainer.appendChild(p);
+                }
+            };
+
+            // clear existing then spawn
+            particlesContainer.innerHTML = '';
+            spawn(20);
+            // refresh particles occasionally
+            setInterval(() => {
+                particlesContainer.innerHTML = '';
+                spawn(18 + Math.round(Math.random() * 8));
+            }, 22000);
+        }
+
+        // scroll-down button behavior
+        if (scrollBtn) {
+            scrollBtn.addEventListener('click', function() {
+                const target = this.getAttribute('data-scroll-to') || '#about-us';
+                const el = document.querySelector(target);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    }
 });

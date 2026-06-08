@@ -9,6 +9,8 @@
     <?php else: ?>
     <meta name="description" content="Dhrupodi Dancers' Association of KUET - Celebrating the grace and tradition of classical dance at KUET.">
     <?php endif; ?>
-    <link rel="stylesheet" href="/Dhrupodi/css/style.css">
+    <link rel="stylesheet" href="/Dhrupodi/css/global.css">
+    <link rel="stylesheet" href="/Dhrupodi/css/navbar.css">
+    <link rel="stylesheet" href="/Dhrupodi/css/footer.css">
 </head>
 <body>

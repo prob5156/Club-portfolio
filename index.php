@@ -7,10 +7,23 @@ require_once 'php/navbar.php';
 
 	<!-- Hero Section -->
 	<section id="home" class="hero-section">
-		<div class="hero-content">
-			<h2>Welcome to Dhrupodi</h2>
-			<p>Celebrating the grace and tradition of classical dance at KUET</p>
-			<button class="cta-btn">Join Us Today</button>
+		<div class="hero-bg" aria-hidden="true"></div>
+		<div class="hero-overlay" aria-hidden="true"></div>
+		<div class="hero-inner">
+			<div class="hero-particles" aria-hidden="true"></div>
+			<div class="hero-content">
+				<h1 class="hero-title"><span class="reveal">Welcome to</span> <strong class="brand">Dhrupodi</strong></h1>
+				<p class="hero-sub">Preserving classical dance traditions and celebrating community at KUET.</p>
+				<div class="hero-ctas">
+					<a href="/Dhrupodi/contact.php" class="cta-btn primary">Join Us</a>
+					<a href="/Dhrupodi/gallery.php" class="cta-btn secondary">Explore Gallery</a>
+				</div>
+			</div>
+
+			<button class="scroll-down" aria-label="Scroll down" data-scroll-to="#about-us">
+				<span class="arrow"></span>
+				<span class="scroll-text">Explore</span>
+			</button>
 		</div>
 	</section>
 
