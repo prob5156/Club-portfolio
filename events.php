@@ -1,6 +1,7 @@
 <?php
 $pageTitle = "Events - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Upcoming events and performances by Dhrupodi Dancers' Association of KUET - workshops, recitals, and cultural programs.";
+$pageStylesheets = ['/Dhrupodi/css/pages/events.css'];
 require_once 'php/header.php';
 require_once 'php/navbar.php';
 ?>

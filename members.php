@@ -1,6 +1,7 @@
 <?php
 $pageTitle = "Members - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Meet the talented dancers and directors of Dhrupodi Dancers' Association of KUET.";
+$pageStylesheets = ['/Dhrupodi/css/pages/members.css'];
 require_once 'php/header.php';
 require_once 'php/navbar.php';
 ?>

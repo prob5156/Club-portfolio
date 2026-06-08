@@ -12,5 +12,12 @@
     <link rel="stylesheet" href="/Dhrupodi/css/global.css">
     <link rel="stylesheet" href="/Dhrupodi/css/navbar.css">
     <link rel="stylesheet" href="/Dhrupodi/css/footer.css">
+    <?php if (isset($pageStylesheets) && is_array($pageStylesheets)): ?>
+    <?php foreach ($pageStylesheets as $stylesheet): ?>
+    <link rel="stylesheet" href="<?php echo htmlspecialchars($stylesheet); ?>">
+    <?php endforeach; ?>
+    <?php elseif (isset($pageStylesheet)): ?>
+    <link rel="stylesheet" href="<?php echo htmlspecialchars($pageStylesheet); ?>">
+    <?php endif; ?>
 </head>
 <body>

@@ -1,6 +1,7 @@
 <?php
 $pageTitle = "Gallery - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Browse the gallery of Dhrupodi Dancers' Association of KUET - classical dance performances, events, and community moments.";
+$pageStylesheets = ['/Dhrupodi/css/pages/gallery.css'];
 require_once 'php/header.php';
 require_once 'php/navbar.php';
 ?>

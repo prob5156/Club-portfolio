@@ -1,6 +1,7 @@
 <?php
 $pageTitle = "Contact - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Get in touch with Dhrupodi Dancers' Association of KUET. Send us a message or find our contact details.";
+$pageStylesheets = ['/Dhrupodi/css/pages/contact.css'];
 require_once 'php/header.php';
 require_once 'php/navbar.php';
 ?>

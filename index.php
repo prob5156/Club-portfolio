@@ -1,6 +1,7 @@
 <?php
 $pageTitle = "Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Welcome to Dhrupodi Dancers' Association of KUET - Celebrating the grace and tradition of classical dance at KUET.";
+$pageStylesheets = ['/Dhrupodi/css/pages/index.css'];
 require_once 'php/header.php';
 require_once 'php/navbar.php';
 ?>
