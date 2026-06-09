@@ -6,27 +6,34 @@ require_once 'php/header.php';
 require_once 'php/navbar.php';
 ?>
 
-	<!-- Gallery Section -->
-	<div id="gallery" class="content">
-		<h2 class="page-title">Our Gallery</h2>
-		<p class="page-intro">Moments captured from our performances and events</p>
-		<div class="features-container">
-			<div class="feature-card">
-				<div class="card-icon">🎭</div>
-				<h3>Classical Dance</h3>
-				<p>Preserving traditional dance forms and cultural heritage</p>
-			</div>
-			<div class="feature-card">
-				<div class="card-icon">🎪</div>
-				<h3>Events &amp; Performances</h3>
-				<p>Regular shows and cultural programs throughout the year</p>
-			</div>
-			<div class="feature-card">
-				<div class="card-icon">👥</div>
-				<h3>Community</h3>
-				<p>Join our vibrant dance community at KUET</p>
-			</div>
+	<section id="gallery" class="content gallery-page">
+		<div class="gallery-header">
+			<p class="section-kicker">Gallery</p>
+			<h1 class="page-title">Our Gallery</h1>
+			<p class="page-intro">Moments captured from our performances and events.</p>
 		</div>
-	</div>
+
+		<div class="gallery-grid" role="list" aria-label="Gallery photos">
+			<?php
+			$items = [
+				['src' => '/Dhrupodi/images/dhrupodi-screenshot.png', 'title' => 'Grace in Motion', 'caption' => 'Performance highlights and stage photos.'],
+				['src' => '/Dhrupodi/images/dhrupodi-screenshot.png', 'title' => 'Rehearsal', 'caption' => 'Behind-the-scenes rehearsal moments.'],
+				['src' => '/Dhrupodi/images/dhrupodi-screenshot.png', 'title' => 'Community', 'caption' => 'Members and collaborators.'],
+				['src' => '/Dhrupodi/images/dhrupodi-screenshot.png', 'title' => 'Events', 'caption' => 'Special events and workshops.'],
+				['src' => '/Dhrupodi/images/dhrupodi-screenshot.png', 'title' => 'Stage', 'caption' => 'Lighting and choreography frames.'],
+				['src' => '/Dhrupodi/images/dhrupodi-screenshot.png', 'title' => 'Portraits', 'caption' => 'Artistic portraits of dancers.'],
+			];
+
+			foreach ($items as $it): ?>
+				<figure class="gallery-item">
+					<img src="<?php echo htmlspecialchars($it['src']); ?>" alt="<?php echo htmlspecialchars($it['title']); ?>" loading="lazy">
+					<figcaption class="gallery-caption">
+						<strong><?php echo htmlspecialchars($it['title']); ?></strong>
+						<span><?php echo htmlspecialchars($it['caption']); ?></span>
+					</figcaption>
+				</figure>
+			<?php endforeach; ?>
+		</div>
+	</section>
 
 <?php require_once 'php/footer.php'; ?>

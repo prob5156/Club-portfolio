@@ -1,11 +1,109 @@
-.page-title {
-	text-align: center;
-	color: #1a472a;
-	margin-bottom: 2rem;
+.gallery-page {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
 }
 
-.page-intro {
-	text-align: center;
-	color: #666;
-	margin-bottom: 2rem;
+.gallery-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+}
+
+.section-kicker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.9rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(26, 71, 42, 0.1);
+    color: #1a472a;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.gallery-page .page-title {
+    color: #1a472a;
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.08;
+}
+
+.gallery-page .page-intro {
+    text-align: center;
+    color: #4e6357;
+    margin: 0 auto;
+    max-width: 760px;
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.75;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.gallery-item {
+    margin: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #1a472a;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.gallery-caption {
+    padding: 1rem 1.05rem 1.1rem;
+}
+
+.gallery-caption strong {
+    display: block;
+    color: #1a472a;
+    font-size: 1.05rem;
+    margin-bottom: 0.45rem;
+}
+
+.gallery-caption span {
+    display: block;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.gallery-item:hover {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-item img {
+    transition: transform 240ms ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.02);
+}
+
+@media (max-width: 700px) {
+    .gallery-page {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item img {
+        height: 200px;
+    }
 }

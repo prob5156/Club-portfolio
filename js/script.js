@@ -57,18 +57,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Join Us button
-    const ctaBtn = document.querySelector('.cta-btn');
-    if (ctaBtn) {
-        ctaBtn.addEventListener('click', function() {
+    // CTA buttons: prefer smooth scroll to on-page contact section when available
+    document.querySelectorAll('.cta-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const href = this.getAttribute('href') || '';
             const contactSection = document.getElementById('contact');
-            if (contactSection) {
+            if (href.indexOf('contact') > -1 && contactSection) {
+                e.preventDefault();
                 contactSection.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                window.location.href = 'contact.php';
             }
         });
-    }
+    });
 
     // Contact form submission
     const contactForm = document.querySelector('.contact-form form');
@@ -127,5 +126,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
             });
         }
+
+        // Reveal sections and subtle entrance animations (home page only)
+        const revealTargets = [].slice.call(document.querySelectorAll('.reveal-section, .feature-card'));
+        if (revealTargets.length && 'IntersectionObserver' in window) {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // unobserve once visible to avoid thrash
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealTargets.forEach(t => obs.observe(t));
+        } else {
+            // fallback: make all visible
+            revealTargets.forEach(t => t.classList.add('is-visible'));
+        }
     }
+
 });

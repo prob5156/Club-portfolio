@@ -29,7 +29,7 @@ require_once 'php/navbar.php';
 	</section>
 
 	<!-- Community Showcase Section -->
-	<section id="about-us" class="community-showcase">
+	<section id="about-us" class="community-showcase reveal-section">
 		<div class="community-overlay">
 			<h2>Our Passionate Community</h2>
 			<p>Meet the talented dancers and artists who bring Dhrupodi to life</p>
@@ -37,7 +37,7 @@ require_once 'php/navbar.php';
 	</section>
 
 	<!-- Feature Cards Section -->
-	<div id="gallery" class="content">
+	<div id="gallery" class="content reveal-section">
 		<div class="features-container">
 			<div class="feature-card">
 				<div class="card-icon">🎭</div>
@@ -57,7 +57,7 @@ require_once 'php/navbar.php';
 		</div>
 
 		<!-- Upcoming Events Section -->
-		<section id="events" class="events-section">
+		<section id="events" class="events-section reveal-section">
 			<h2>Upcoming Events</h2>
 			<div class="events-list">
 				<div class="event-card">
@@ -86,7 +86,7 @@ require_once 'php/navbar.php';
 	</div>
 
 	<!-- Members Section -->
-	<section id="members" class="members-section">
+	<section id="members" class="members-section reveal-section">
 		<div class="content">
 			<h2>Our Members</h2>
 			<p>Our talented dancers and directors</p>
@@ -95,7 +95,7 @@ require_once 'php/navbar.php';
 	</section>
 
 	<!-- Contact Section -->
-	<section id="contact" class="contact-section">
+	<section id="contact" class="contact-section reveal-section">
 		<div class="content">
 			<h2>Get In Touch</h2>
 			<div class="contact-form">
