@@ -6,7 +6,7 @@ body.home-page {
     background-size: cover;
     background-position: center top;
     background-attachment: scroll;
-    background-color: #0c2b18; 
+    background-color: #0c2b18;
     font-family: var(--font-body);
     margin: 0 !important;
     padding: 0 !important;
@@ -21,7 +21,7 @@ body.home-page {
 
 .home-dark-section {
     background-color: #0c2b18;
-    
+
     color: white;
 }
 
@@ -31,7 +31,7 @@ body.home-page {
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.15;
-    
+
     z-index: 0;
     pointer-events: none;
     max-height: 80%;
@@ -198,7 +198,7 @@ body.home-page {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 80px; 
+    padding-top: 80px;
     margin-top: 0 !important;
     box-sizing: border-box;
     overflow: hidden;

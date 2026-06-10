@@ -5,8 +5,8 @@
     $navItems = [
         'index.php' => 'Home',
         'about.php' => 'About Us',
-        'gallery.php' => 'Gallery',
         'events.php' => 'Events',
+        'gallery.php' => 'Gallery',
         'members.php' => 'Members',
         'contact.php' => 'Contact',
     ];

@@ -13,21 +13,21 @@
     gap: clamp(0.8rem, 1.3vw, 1.1rem);
     padding: 0.8rem 1.8rem;
     border-radius: 50px;
-    background: rgba(15, 15, 15, 0.18); /* Transparent dark background */
+    background: rgba(15, 15, 15, 0.18); 
     backdrop-filter: blur(18px) saturate(180%);
     -webkit-backdrop-filter: blur(18px) saturate(180%);
-    border: 1px solid rgba(212, 175, 55, 0.25); /* Thin golden border */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.05); /* Soft elegant shadow */
+    border: 1px solid rgba(212, 175, 55, 0.25); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.05); 
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .navbar.is-scrolled {
     top: 15px;
     width: 96%;
-    background: rgba(81, 76, 3, 0.75); /* Darker on scroll */
+    background: rgba(81, 76, 3, 0.75); 
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.1);
     border-color: rgba(212, 175, 55, 0.4);
-    padding: 0.6rem 1.8rem; /* Shrink slightly */
+    padding: 0.6rem 1.8rem; 
 }
 
 .logo-section {
@@ -51,7 +51,7 @@
 
 .site-title {
     display: inline-block;
-    color: #F4E4BC; /* Champagne Gold */
+    color: #F4E4BC; 
     font-size: 1.15rem;
     font-weight: 700;
     line-height: 1.2;
@@ -65,7 +65,7 @@
     font-size: 0.8rem;
     opacity: 0.9;
     font-weight: 500;
-    color: #E8C547; /* Light Gold */
+    color: #E8C547; 
     text-transform: none;
     letter-spacing: 0.05em;
 }
@@ -85,7 +85,7 @@
     isolation: isolate;
     overflow: hidden;
     background-color: transparent;
-    color: #F4E4BC; /* Champagne Gold */
+    color: #F4E4BC; 
     border: 1px solid transparent;
     padding: 0.65rem 1.1rem;
     cursor: pointer;
@@ -103,21 +103,21 @@
     position: absolute;
     inset: auto 15px 6px;
     height: 2px;
-    background: linear-gradient(90deg, rgba(212, 175, 55, 0), rgba(212, 175, 55, 1), rgba(212, 175, 55, 0)); /* Gold underline */
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0), rgba(212, 175, 55, 1), rgba(212, 175, 55, 0)); 
     transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Golden glow */
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); 
 }
 
 .nav-btn:hover,
 .nav-btn:focus-visible {
     background-color: rgba(212, 175, 55, 0.08);
     border-color: rgba(212, 175, 55, 0.3);
-    transform: translateY(-2px) scale(1.05); /* Slight lift and scale */
+    transform: translateY(-2px) scale(1.05); 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(212, 175, 55, 0.1);
     outline: none;
-    color: #D4AF37; /* Gold */
+    color: #D4AF37; 
     text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
@@ -131,7 +131,7 @@
     background-color: rgba(212, 175, 55, 0.12);
     border-color: rgba(212, 175, 55, 0.5);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(212, 175, 55, 0.2);
-    color: #E8C547; /* Light Gold */
+    color: #E8C547; 
     font-weight: 600;
 }
 
@@ -245,8 +245,8 @@
         align-items: start;
         gap: 0.75rem 1rem;
         padding: 0.9rem 1rem;
-        border-radius: 20px; /* Adjust radius for mobile block */
-        background: rgba(15, 15, 15, 0.7); /* Slightly darker for mobile */
+        border-radius: 20px; 
+        background: rgba(15, 15, 15, 0.7); 
     }
 
     .nav-toggle {

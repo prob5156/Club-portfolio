@@ -1,0 +1,297 @@
+.events-hero {
+    width: 100%;
+    min-height: 500px;
+    height: 60vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), url('/Dhrupodi/images/Homepage/home%20face.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: #fff;
+    padding-top: 100px; 
+    padding-bottom: 60px; 
+    overflow: hidden; 
+}
+.events-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; 
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40h1200V0C1000 35 200 5 0 40z" fill="%23fdfbf7"/></svg>');
+    background-size: cover;
+    background-position: bottom;
+    z-index: 2;
+    opacity: 0.9;
+}
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+.hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.hero-divider::before,
+.hero-divider::after {
+    content: '';
+    width: 80px;
+    height: 1px;
+    background-color: var(--color-primary);
+}
+.hero-divider svg {
+    fill: var(--color-primary);
+    width: 24px;
+    height: 24px;
+}
+.hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+
+.events-body {
+    padding: 80px 5% 60px; 
+    background-color: #ffffff;
+    position: relative;
+    z-index: 1; 
+}
+.section-heading-wrapper {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.section-heading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: 1px;
+}
+.section-heading svg {
+    fill: var(--color-primary);
+    width: 24px;
+    height: 24px;
+}
+
+
+.e-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+.e-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.e-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+.e-card-img-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #000;
+}
+.e-card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.e-card:hover .e-card-img-box img {
+    transform: scale(1.05);
+}
+
+.e-date-badge {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    background: rgba(10, 10, 10, 0.9);
+    color: #fff;
+    padding: 10px 15px;
+    text-align: center;
+    border-bottom: 3px solid var(--color-primary);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.e-date-badge .month {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+}
+.e-date-badge .day {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+}
+
+.e-card-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.e-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+.e-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+}
+.e-meta svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-primary);
+    flex-shrink: 0;
+}
+.e-desc {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+
+.e-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    border: 1px solid var(--color-primary);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    text-decoration: none;
+}
+.e-card:hover .e-btn {
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+    background: var(--color-primary);
+    color: #fff;
+}
+.e-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+.e-card:hover .e-btn svg {
+    transform: translateX(4px);
+}
+
+
+.e-footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 40px;
+    position: relative;
+}
+.e-footer-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background-color: rgba(212, 175, 55, 0.3);
+}
+.e-footer-line::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+}
+.e-footer-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 15px;
+}
+.e-footer-content svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-primary);
+}
+
+
+@media (max-width: 1200px) {
+    .e-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+    }
+}
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 42px;
+    }
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    .e-cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    .section-heading {
+        font-size: 26px;
+    }
+}

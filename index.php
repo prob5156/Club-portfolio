@@ -365,4 +365,28 @@ require_once 'php/navbar.php';
     </div>
 </section>
 
+<?php require_once 'php/footer.php'; ?>                <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+                <div class="c-text">
+                    <h4>Location</h4>
+                    <p>KUET, Khulna<br>Bangladesh</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-box reveal-section">
+            <form action="/Dhrupodi/contact.php" method="POST">
+                <div class="form-row">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn-submit-full">
+                    Send Message 
+                    <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
 <?php require_once 'php/footer.php'; ?>
