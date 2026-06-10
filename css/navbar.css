@@ -1,24 +1,33 @@
 .navbar {
-    position: sticky;
-    top: 0;
-    left: 0;
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1400px;
     z-index: 1000;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-areas: "brand links search";
     align-items: center;
     gap: clamp(0.8rem, 1.3vw, 1.1rem);
-    padding: 0.95rem clamp(0.9rem, 2.2vw, 1.6rem);
-    background: rgba(8, 45, 28, 0.58);
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    background: rgba(212, 175, 55, 0.15); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.4); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .navbar.is-scrolled {
-    background: rgba(8, 45, 28, 0.72);
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.24);
+    top: 15px;
+    width: 96%;
+    background: rgba(212, 175, 55, 0.35); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(212, 175, 55, 0.6);
+    padding: 0.6rem 1.8rem;
 }
 
 .logo-section {
@@ -27,16 +36,17 @@
     align-items: center;
     gap: 0.95rem;
     min-width: 0;
+    text-decoration: none;
 }
 
 .navbar-logo {
-    width: 56px;
-    height: 56px;
-    object-fit: contain;
-    background: rgba(255, 255, 255, 0.95);
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    background: #fff;
     padding: 4px;
-    border-radius: 14px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 .site-title {
@@ -119,27 +129,28 @@
 .search-bar {
     grid-area: search;
     justify-self: end;
-    padding: 0.68rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(212, 175, 55, 0.4);
     border-radius: 999px;
-    width: min(220px, 100%);
-    font-size: 0.92rem;
-    color: white;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    width: min(200px, 100%);
+    font-size: 0.85rem;
+    color: #ffffff;
+    background: rgba(212, 175, 55, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    font-weight: 400;
 }
 
 .search-bar:focus {
     outline: none;
-    border-color: rgba(255, 255, 255, 0.38);
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.16);
+    border-color: #D4AF37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    background: rgba(212, 175, 55, 0.2);
 }
 
 .search-bar::placeholder {
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .nav-toggle {
@@ -149,14 +160,14 @@
     justify-content: center;
     gap: 0.55rem;
     padding: 0.72rem 0.95rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.4);
     border-radius: 999px;
-    color: white;
-    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    background: rgba(212, 175, 55, 0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     cursor: pointer;
-    transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nav-toggle:hover,

@@ -5,7 +5,7 @@ $pageStylesheets = ['/Dhrupodi/css/pages/members.css'];
 require_once 'php/header.php';
 require_once 'php/navbar.php';
 
-// Dynamic Categorization Logic
+
 $imageDir = __DIR__ . '/images/';
 $allFiles = array_diff(scandir($imageDir), array('.', '..'));
 
@@ -21,11 +21,11 @@ foreach($allFiles as $file) {
     $filenameLower = strtolower($file);
     $basename = pathinfo($file, PATHINFO_FILENAME);
     
-    // Clean up basename to get designation (remove numbers and extra spaces)
+    
     $designation = preg_replace('/[0-9]+/', '', $basename);
     $designation = trim(str_replace(['-', '_'], ' ', $designation));
     
-    // Fix typos if any
+    
     $designation = str_ireplace('Genaral Secratary', 'General Secretary', $designation);
     
     $isExec = false;
@@ -44,8 +44,8 @@ foreach($allFiles as $file) {
         }
     }
     
-    // Rules: If it's Exec, it goes to Exec. If it's Core, it goes to Core. 
-    // Do NOT mix them. Do NOT duplicate.
+    
+    
     if($isExec) {
         $execs[] = [
             'file' => $file,
@@ -61,7 +61,7 @@ foreach($allFiles as $file) {
     }
 }
 
-// Sort Executive Committee by hierarchy
+
 $hierarchy = [
     'president' => 1,
     'vice president' => 2,
@@ -90,7 +90,7 @@ usort($execs, function($a, $b) use ($hierarchy) {
     }
     
     if($rankA === $rankB) {
-        // If same rank (e.g. two Vice Presidents), sort alphabetically by filename
+        
         return strcmp($a['file'], $b['file']);
     }
     
@@ -156,7 +156,7 @@ body {
         <div class="m-header-divider"></div>
     </div>
 
-    <!-- Section 1: Executive Committee -->
+    
     <?php if(!empty($execs)): ?>
     <div class="role-section">
         <div class="role-section-header">
@@ -181,7 +181,7 @@ body {
     </div>
     <?php endif; ?>
 
-    <!-- Section 2: Core Members -->
+    
     <?php if(!empty($cores)): ?>
     <div class="role-section">
         <div class="role-section-header">
@@ -207,7 +207,7 @@ body {
     <?php endif; ?>
 </div>
 
-<!-- Side Drawer & Overlay -->
+
 <div class="drawer-overlay" id="drawerOverlay"></div>
 <aside class="member-drawer" id="memberDrawer">
     <div class="drawer-header">
@@ -288,18 +288,18 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
 
-    // Smooth Nested Scrolling for Scroll Containers
+    
     const scrollContainers = document.querySelectorAll('.members-scroll-container');
     scrollContainers.forEach(container => {
         container.addEventListener('wheel', function(e) {
             const isAtTop = this.scrollTop === 0;
-            // +1 to account for sub-pixel rendering rounding
+            
             const isAtBottom = this.scrollHeight - this.scrollTop <= this.clientHeight + 1;
             
-            // If scrolling UP and at the top, or scrolling DOWN and at the bottom
+            
             if ((e.deltaY < 0 && isAtTop) || (e.deltaY > 0 && isAtBottom)) {
-                e.preventDefault(); // Stop the container from "trying" to scroll
-                window.scrollBy({ top: e.deltaY, behavior: 'auto' }); // Scroll the page
+                e.preventDefault(); 
+                window.scrollBy({ top: e.deltaY, behavior: 'auto' }); 
             }
         }, { passive: false });
     });

@@ -9,7 +9,7 @@
     <?php else: ?>
     <meta name="description" content="Dhrupodi Dancers' Association of KUET - Celebrating the grace and tradition of classical dance at KUET.">
     <?php endif; ?>
-    <!-- Typography -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">

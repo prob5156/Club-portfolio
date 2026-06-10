@@ -6,7 +6,7 @@ require_once 'php/header.php';
 require_once 'php/navbar.php';
 ?>
 
-	<!-- Contact Section -->
+	
 	<section id="contact" class="contact-section">
 		<div class="content">
 			<h2 class="page-title">Get In Touch</h2>

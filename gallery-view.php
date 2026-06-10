@@ -25,11 +25,11 @@ require_once 'php/navbar.php';
 			<p class="page-intro"><?php echo htmlspecialchars($currentCat['desc']); ?></p>
 		</div>
 
-        <!-- VIDEOS SECTION -->
+        
         <div class="media-section videos-section">
             <h2 class="section-heading">Videos</h2>
             <div class="videos-grid">
-                <!-- Video Card 1 -->
+                
                 <div class="video-card">
                     <div class="video-thumbnail">
                         <img src="/Dhrupodi/images/dhrupodi-screenshot.png" alt="Video Thumbnail">
@@ -42,7 +42,7 @@ require_once 'php/navbar.php';
                         <span class="video-date">Oct 12, 2025</span>
                     </div>
                 </div>
-                <!-- Video Card 2 -->
+                
                 <div class="video-card">
                     <div class="video-thumbnail">
                         <img src="/Dhrupodi/images/dhrupodi-screenshot.png" alt="Video Thumbnail">
@@ -56,7 +56,7 @@ require_once 'php/navbar.php';
                     </div>
                 </div>
                 <?php if($categoryId === 'videos'): ?>
-                <!-- Additional Videos if category is purely videos -->
+                
                 <div class="video-card">
                     <div class="video-thumbnail">
                         <img src="/Dhrupodi/images/dhrupodi-screenshot.png" alt="Video Thumbnail">
@@ -86,13 +86,13 @@ require_once 'php/navbar.php';
         </div>
 
         <?php if($categoryId !== 'videos'): ?>
-        <!-- IMAGES SECTION -->
+        
         <div class="media-section images-section">
             <h2 class="section-heading">Images</h2>
             <div class="masonry-gallery">
-                <!-- We simulate varying heights with different aspect ratio placeholder logic or same image for now -->
+                
                 <?php for($i = 1; $i <= 12; $i++): 
-                    // Simulate random heights for masonry effect
+                    
                     $hClass = ($i % 3 == 0) ? 'tall' : (($i % 4 == 0) ? 'short' : 'medium');
                 ?>
                 <div class="masonry-item <?php echo $hClass; ?>">
@@ -107,7 +107,7 @@ require_once 'php/navbar.php';
         <?php endif; ?>
 	</section>
 
-    <!-- Lightbox Modal -->
+    
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">&times;</button>
         <button class="lightbox-nav prev" id="lightboxPrev">&larr;</button>

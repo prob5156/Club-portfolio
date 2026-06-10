@@ -7,7 +7,7 @@ require_once 'php/navbar.php';
 ?>
 
 	<div class="content">
-		<!-- Upcoming Events Section -->
+		
 		<section id="upcoming-events" class="events-section">
 			<h2>Upcoming Events</h2>
 			<div class="events-list" style="display: block; text-align: center; color: var(--color-text-muted); padding: 2rem 0;">
@@ -15,12 +15,12 @@ require_once 'php/navbar.php';
 			</div>
 		</section>
 
-		<!-- Past Events Section -->
+		
 		<section id="past-events" class="events-section" style="margin-top: 4rem;">
 			<h2>Past Events</h2>
 			<div class="events-list">
 				
-				<!-- Event Card 1 -->
+				
 				<div class="event-card">
 					<div class="event-image">
 						<img src="/Dhrupodi/images/Event 1.jpg" alt="Spring Performance">
@@ -42,7 +42,7 @@ require_once 'php/navbar.php';
 					</div>
 				</div>
 
-				<!-- Event Card 2 -->
+				
 				<div class="event-card">
 					<div class="event-image">
 						<img src="/Dhrupodi/images/Event 2.jpg" alt="Workshop Session">
@@ -64,7 +64,7 @@ require_once 'php/navbar.php';
 					</div>
 				</div>
 
-				<!-- Event Card 3 -->
+				
 				<div class="event-card">
 					<div class="event-image">
 						<img src="/Dhrupodi/images/Event 3.jpg" alt="Annual Recital">

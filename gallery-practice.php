@@ -25,7 +25,7 @@ body {
         <div class="header-divider"></div>
     </div>
 
-    <!-- Section 1: Videos -->
+    
     <div class="subpage-section">
         <div class="subpage-section-header">
             <h2>VIDEOS</h2>
@@ -49,7 +49,7 @@ body {
         </div>
     </div>
 
-    <!-- Section 2: Images -->
+    
     <div class="subpage-section">
         <div class="subpage-section-header">
             <h2>IMAGES</h2>

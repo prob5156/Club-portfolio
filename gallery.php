@@ -33,9 +33,9 @@ body {
         <div class="header-divider"></div>
     </div>
 
-    <!-- Top Categories Grid -->
+    
     <div class="top-categories">
-        <!-- Events -->
+        
         <div class="cat-card">
             <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 1.jpg" alt="Events"></div>
             <div class="cat-content">
@@ -47,7 +47,7 @@ body {
                 <a href="gallery-events.php" class="cat-btn">View Gallery &rarr;</a>
             </div>
         </div>
-        <!-- Stage Performances -->
+        
         <div class="cat-card">
             <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 2.jpg" alt="Stage"></div>
             <div class="cat-content">
@@ -59,7 +59,7 @@ body {
                 <a href="gallery-stage.php" class="cat-btn">View Gallery &rarr;</a>
             </div>
         </div>
-        <!-- Practice & Rehearsals -->
+        
         <div class="cat-card">
             <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 3.jpg" alt="Practice"></div>
             <div class="cat-content">
@@ -71,7 +71,7 @@ body {
                 <a href="gallery-practice.php" class="cat-btn">View Gallery &rarr;</a>
             </div>
         </div>
-        <!-- Random Memories -->
+        
         <div class="cat-card">
             <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 1.jpg" alt="Memories"></div>
             <div class="cat-content">
@@ -83,7 +83,7 @@ body {
                 <a href="gallery-random.php" class="cat-btn">View Gallery &rarr;</a>
             </div>
         </div>
-        <!-- Videos -->
+        
         <div class="cat-card">
             <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 2.jpg" alt="Videos"></div>
             <div class="cat-content">
@@ -97,7 +97,7 @@ body {
         </div>
     </div>
 
-    <!-- Section: Events -->
+    
     <div class="media-container">
         <div class="media-container-header">
             <div class="mc-title-area">
@@ -122,7 +122,7 @@ body {
         </div>
     </div>
 
-    <!-- Section: Stage Performances -->
+    
     <div class="media-container">
         <div class="media-container-header">
             <div class="mc-title-area">
@@ -147,7 +147,7 @@ body {
         </div>
     </div>
 
-    <!-- Section: Practice & Rehearsals -->
+    
     <div class="media-container">
         <div class="media-container-header">
             <div class="mc-title-area">
@@ -174,7 +174,7 @@ body {
 
 </div>
 
-<!-- Lightbox Modal -->
+
 <div class="lightbox" id="lightbox">
     <button class="lightbox-btn lightbox-close" id="lightboxClose">&times;</button>
     <button class="lightbox-btn lightbox-prev" id="lightboxPrev">&larr;</button>

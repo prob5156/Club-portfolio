@@ -1,4 +1,4 @@
-    <!-- Footer -->
+    
     <footer id="footer" class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -27,7 +27,7 @@
 
     <script src="/Dhrupodi/js/script.js"></script>
 
-    <!-- Floating Social Widget -->
+    
     <div class="floating-social-widget" id="socialWidget">
         <div class="social-menu-items" id="socialMenuItems">
             <a href="#" class="social-btn" aria-label="Facebook">
@@ -60,14 +60,14 @@
             const socialToggleBtn = document.getElementById('socialToggleBtn');
             const socialMenuItems = document.getElementById('socialMenuItems');
 
-            // Toggle menu on button click
+            
             socialToggleBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 socialWidget.classList.toggle('active');
                 socialMenuItems.classList.toggle('active');
             });
 
-            // Close menu when clicking outside
+            
             document.addEventListener('click', (e) => {
                 if (socialWidget.classList.contains('active') && !socialWidget.contains(e.target)) {
                     socialWidget.classList.remove('active');

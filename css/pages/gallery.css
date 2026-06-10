@@ -1,4 +1,4 @@
-/* Background is handled inline on body in gallery.php */
+
 
 .gallery-page {
     max-width: 1400px;
@@ -58,7 +58,7 @@
     background: var(--color-primary-dark);
 }
 
-/* Top Categories Grid */
+
 .top-categories {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -159,7 +159,7 @@
     border-color: var(--color-primary-dark);
 }
 
-/* Media Sections */
+
 .media-container {
     background: #f8f9fa;
     border-radius: 20px;
@@ -225,7 +225,7 @@
     background: var(--color-primary);
 }
 
-/* Media Grid inside Sections */
+
 .media-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -284,7 +284,7 @@
     line-height: 1.3;
 }
 
-/* Responsive */
+
 @media (max-width: 1200px) {
     .top-categories {
         grid-template-columns: repeat(3, 1fr);
@@ -319,7 +319,7 @@
     }
 }
 
-/* Lightbox */
+
 .lightbox {
     position: fixed;
     inset: 0;

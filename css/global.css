@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
-/* Feature Cards */
+
 .features-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.5;
 }
 
-/* Events Section */
+
 .events-section {
     margin-top: 4rem;
     padding: 2rem 0;
@@ -241,7 +241,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(4px);
 }
 
-/* Members Section */
+
 .members-section {
     background: transparent;
     padding: 4rem 2rem;
@@ -373,7 +373,7 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--color-primary);
 }
 
-/* Side Drawer Styles */
+
 .drawer-overlay {
     position: fixed;
     top: 0;
@@ -540,7 +540,7 @@ h1, h2, h3, h4, h5, h6 {
     fill: currentColor;
 }
 
-/* Floating Social Widget */
+
 .floating-social-widget {
     position: fixed;
     right: 20px;
@@ -622,7 +622,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(45deg);
 }
 
-/* Contact Section */
+
 .contact-section {
     background: rgba(255,255,255,0.9);
     padding: 3rem 2rem;

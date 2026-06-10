@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', updateScrolledState, { passive: true });
     }
 
-    // Navigation smooth scroll for same-page anchors
+    
     document.querySelectorAll('a.nav-btn[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href').substring(1);
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // CTA buttons: prefer smooth scroll to on-page contact section when available
+    
     document.querySelectorAll('.cta-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             const href = this.getAttribute('href') || '';
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Contact form submission
+    
     const contactForm = document.querySelector('.contact-form form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -79,16 +79,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Hero animations, particles and scroll indicator
-    const hero = document.querySelector('.hero-section');
+    
+    const hero = document.querySelector('.hero-pixel') || document.querySelector('.hero-section');
     const particlesContainer = document.querySelector('.hero-particles');
     const scrollBtn = document.querySelector('.scroll-down');
 
     if (hero) {
-        // animate headline reveal
+        
         setTimeout(() => hero.classList.add('hero-animate'), 180);
 
-        // spawn light particles
+        
         if (particlesContainer) {
             const spawn = (count = 18) => {
                 for (let i = 0; i < count; i++) {
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     p.style.width = size + 'px';
                     p.style.height = size + 'px';
                     p.style.left = Math.random() * 100 + '%';
-                    // start a little below center for natural float
+                    
                     p.style.top = 60 + Math.random() * 40 + '%';
                     const dur = 10 + Math.random() * 18;
                     p.style.animationDuration = dur + 's';
@@ -108,17 +108,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             };
 
-            // clear existing then spawn
+            
             particlesContainer.innerHTML = '';
             spawn(20);
-            // refresh particles occasionally
+            
             setInterval(() => {
                 particlesContainer.innerHTML = '';
                 spawn(18 + Math.round(Math.random() * 8));
             }, 22000);
         }
 
-        // scroll-down button behavior
+        
         if (scrollBtn) {
             scrollBtn.addEventListener('click', function() {
                 const target = this.getAttribute('data-scroll-to') || '#about-us';
@@ -127,14 +127,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Reveal sections and subtle entrance animations (home page only)
+        
         const revealTargets = [].slice.call(document.querySelectorAll('.reveal-section, .feature-card'));
         if (revealTargets.length && 'IntersectionObserver' in window) {
             const obs = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        // unobserve once visible to avoid thrash
+                        
                         obs.unobserve(entry.target);
                     }
                 });
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             revealTargets.forEach(t => obs.observe(t));
         } else {
-            // fallback: make all visible
+            
             revealTargets.forEach(t => t.classList.add('is-visible'));
         }
     }
