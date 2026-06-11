@@ -1,5 +1,15 @@
 <?php
+require_once __DIR__ . '/config/auth.php';
 require_once __DIR__ . '/config/database.php';
+
+if (isLoggedIn()) {
+    if (getUserRole() === 'admin') {
+        header("Location: /Dhrupodi/admin/index.php");
+    } else {
+        header("Location: /Dhrupodi/member/index.php");
+    }
+    exit();
+}
 
 $stmt = $pdo->prepare("SELECT * FROM events WHERE is_published = 1 AND status != 'cancelled' ORDER BY is_featured DESC, event_date ASC LIMIT 6");
 $stmt->execute();

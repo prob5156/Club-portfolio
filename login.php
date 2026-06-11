@@ -21,8 +21,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user && password_verify($password, $user['password_hash'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
-            
             $pdo->prepare("UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?")->execute([$user['id']]);
+
+            // Handle Remember Me
+            if (isset($_POST['remember_me'])) {
+                $selector = bin2hex(random_bytes(16));
+                $validator = bin2hex(random_bytes(32));
+                $validatorHash = hash('sha256', $validator);
+                
+                $expiresAt = new DateTime('+30 days');
+                
+                $stmt = $pdo->prepare("INSERT INTO user_tokens (user_id, selector, validator_hash, expires_at) VALUES (?, ?, ?, ?)");
+                $stmt->execute([$user['id'], $selector, $validatorHash, $expiresAt->format('Y-m-d H:i:s')]);
+                
+                $cookieValue = $selector . ':' . $validator;
+                setcookie('remember_me', $cookieValue, [
+                    'expires' => $expiresAt->getTimestamp(),
+                    'path' => '/',
+                    'secure' => isset($_SERVER['HTTPS']),
+                    'httponly' => true,
+                    'samesite' => 'Lax'
+                ]);
+            }
 
             if ($user['role'] === 'admin') {
                 header("Location: /Dhrupodi/admin/index.php");
@@ -86,7 +106,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label class="form-label">Password</label>
                     <input type="password" name="password" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 12px; font-size: 1.1rem;">Login</button>
+                <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                    <input type="checkbox" name="remember_me" id="remember_me" style="width: auto;">
+                    <label for="remember_me" style="margin: 0; color: var(--color-text-muted); font-size: 0.95rem;">Remember Me</label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px; padding: 12px; font-size: 1.1rem;">Login</button>
             </form>
             <p style="margin-top: 20px; color: var(--color-text-muted);">
                 Don't have an account? <a href="signup.php" style="color: var(--color-accent); text-decoration: none;">Sign up here</a>
