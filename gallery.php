@@ -1,17 +1,31 @@
 <?php
+require_once __DIR__ . '/config/database.php';
+
+$stmt = $pdo->prepare("SELECT * FROM gallery_categories WHERE is_active = 1 ORDER BY display_order ASC");
+$stmt->execute();
+$dbCategories = $stmt->fetchAll();
+
+$stmt = $pdo->prepare("
+    SELECT gi.*, gc.name as category_name, gc.slug as category_slug 
+    FROM gallery_images gi 
+    LEFT JOIN gallery_categories gc ON gi.category_id = gc.id 
+    WHERE gi.is_published = 1 
+    ORDER BY gi.display_order ASC
+");
+$stmt->execute();
+$dbImages = $stmt->fetchAll();
+
+$categories = $dbCategories;
+$imagesByCategory = [];
+foreach ($dbImages as $img) {
+    $imagesByCategory[$img['category_id']][] = $img;
+}
+
 $pageTitle = "Media Center - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Dive into our collection of performances, rehearsals, memories and videos.";
 $pageStylesheets = ['/Dhrupodi/css/pages/gallery.css'];
 require_once 'php/header.php';
 require_once 'php/navbar.php';
-
-$images = [
-    '/Dhrupodi/uploads/events/Event 1.jpg',
-    '/Dhrupodi/uploads/events/Event 2.jpg',
-    '/Dhrupodi/uploads/events/Event 3.jpg',
-    '/Dhrupodi/uploads/gallery/dhrupodi-screenshot.png',
-    '/Dhrupodi/uploads/events/Event 1.jpg'
-];
 ?>
 
 <style>
@@ -35,142 +49,64 @@ body {
 
     
     <div class="top-categories">
-        
+        <?php foreach ($categories as $cat): ?>
         <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 1.jpg" alt="Events"></div>
+            <div class="cat-img-wrapper">
+                <?php 
+                $firstImg = !empty($imagesByCategory[$cat['id']]) ? $imagesByCategory[$cat['id']][0]['image_path'] : 'images/Homepage/home%20face.png';
+                ?>
+                <img src="/Dhrupodi/<?= htmlspecialchars(ltrim($firstImg, '/')) ?>" alt="<?= htmlspecialchars($cat['name']) ?>">
+            </div>
             <div class="cat-content">
                 <h3 class="cat-title">
-                    <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-                    Events
+                    <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><?= $cat['icon_svg'] ?? '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>' ?></svg></span>
+                    <?= htmlspecialchars($cat['name']) ?>
                 </h3>
-                <p class="cat-desc">College events, cultural programs and special occasions.</p>
-                <a href="gallery-events.php" class="cat-btn">View Gallery &rarr;</a>
+                <p class="cat-desc"><?= htmlspecialchars($cat['description'] ?? '') ?></p>
+                <a href="gallery-view.php?category=<?= htmlspecialchars($cat['slug']) ?>" class="cat-btn">View Gallery &rarr;</a>
             </div>
         </div>
-        
-        <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 2.jpg" alt="Stage"></div>
-            <div class="cat-content">
-                <h3 class="cat-title">
-                    <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg></span>
-                    Stage Performances
-                </h3>
-                <p class="cat-desc">Highlights from our stage performances and competitions.</p>
-                <a href="gallery-stage.php" class="cat-btn">View Gallery &rarr;</a>
+        <?php endforeach; ?>
+        <?php if(empty($categories)): ?>
+            <div style="grid-column: 1/-1; padding: 60px 20px; text-align: center; color: var(--color-text-muted); font-size: 1.2rem;">
+                Gallery collections will be updated soon.
             </div>
-        </div>
-        
-        <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 3.jpg" alt="Practice"></div>
-            <div class="cat-content">
-                <h3 class="cat-title">
-                    <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="6.5"/></svg></span>
-                    Practice & Rehearsals
-                </h3>
-                <p class="cat-desc">Behind the scenes moments from our practice sessions and rehearsals.</p>
-                <a href="gallery-practice.php" class="cat-btn">View Gallery &rarr;</a>
-            </div>
-        </div>
-        
-        <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 1.jpg" alt="Memories"></div>
-            <div class="cat-content">
-                <h3 class="cat-title">
-                    <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
-                    Random Memories
-                </h3>
-                <p class="cat-desc">Candid moments, fun times and unforgettable memories.</p>
-                <a href="gallery-random.php" class="cat-btn">View Gallery &rarr;</a>
-            </div>
-        </div>
-        
-        <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 2.jpg" alt="Videos"></div>
-            <div class="cat-content">
-                <h3 class="cat-title">
-                    <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></span>
-                    Videos
-                </h3>
-                <p class="cat-desc">Watch our performances, highlights and dance videos.</p>
-                <a href="gallery-videos.php" class="cat-btn">View Gallery &rarr;</a>
-            </div>
-        </div>
+        <?php endif; ?>
     </div>
 
     
+    <?php foreach ($categories as $cat): ?>
     <div class="media-container">
         <div class="media-container-header">
             <div class="mc-title-area">
-                <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+                <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><?= $cat['icon_svg'] ?? '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>' ?></svg></div>
                 <div>
-                    <h2>Events</h2>
-                    <p>Memorable moments from our events and cultural programs.</p>
+                    <h2><?= htmlspecialchars($cat['name']) ?></h2>
+                    <p><?= htmlspecialchars($cat['description'] ?? '') ?></p>
                 </div>
             </div>
-            <a href="#" class="mc-see-all">See All &rarr;</a>
+            <a href="gallery-view.php?category=<?= htmlspecialchars($cat['slug']) ?>" class="mc-see-all">See All &rarr;</a>
         </div>
         <div class="media-grid">
-            <?php foreach($images as $img): ?>
+            <?php 
+            $catImages = $imagesByCategory[$cat['id']] ?? [];
+            foreach(array_slice($catImages, 0, 8) as $img): ?>
                 <div class="media-item lightbox-trigger">
-                    <img src="<?php echo $img; ?>" alt="Event">
+                    <img src="/Dhrupodi/<?= htmlspecialchars(ltrim($img['image_path'], '/')) ?>" alt="<?= htmlspecialchars($cat['name']) ?>">
                 </div>
             <?php endforeach; ?>
-            <div class="media-more-card">
+            <?php if(count($catImages) > 8): ?>
+            <div class="media-more-card" onclick="window.location.href='gallery-view.php?category=<?= htmlspecialchars($cat['slug']) ?>'" style="cursor:pointer;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <span>+56<br>More</span>
+                <span>+<?= count($catImages) - 8 ?><br>More</span>
             </div>
+            <?php endif; ?>
+            <?php if(empty($catImages)): ?>
+                <div style="grid-column: 1/-1; padding: 20px; color: var(--color-text-muted);">No images yet.</div>
+            <?php endif; ?>
         </div>
     </div>
-
-    
-    <div class="media-container">
-        <div class="media-container-header">
-            <div class="mc-title-area">
-                <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg></div>
-                <div>
-                    <h2>Stage Performances</h2>
-                    <p>Our stage shows, competitions and special performances.</p>
-                </div>
-            </div>
-            <a href="#" class="mc-see-all">See All &rarr;</a>
-        </div>
-        <div class="media-grid">
-            <?php foreach($images as $img): ?>
-                <div class="media-item lightbox-trigger">
-                    <img src="<?php echo $img; ?>" alt="Stage">
-                </div>
-            <?php endforeach; ?>
-            <div class="media-more-card">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <span>+42<br>More</span>
-            </div>
-        </div>
-    </div>
-
-    
-    <div class="media-container">
-        <div class="media-container-header">
-            <div class="mc-title-area">
-                <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="6.5"/></svg></div>
-                <div>
-                    <h2>Practice & Rehearsals</h2>
-                    <p>Glimpses of our hard work and dedication.</p>
-                </div>
-            </div>
-            <a href="#" class="mc-see-all">See All &rarr;</a>
-        </div>
-        <div class="media-grid">
-            <?php foreach($images as $img): ?>
-                <div class="media-item lightbox-trigger">
-                    <img src="<?php echo $img; ?>" alt="Practice">
-                </div>
-            <?php endforeach; ?>
-            <div class="media-more-card">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <span>+18<br>More</span>
-            </div>
-        </div>
-    </div>
+    <?php endforeach; ?>
 
 </div>
 

@@ -1,15 +1,24 @@
-    
     <?php
+    require_once __DIR__ . '/../config/auth.php';
     $currentPage = basename($_SERVER['PHP_SELF']);
 
     $navItems = [
         'index.php' => 'Home',
-        'about.php' => 'About Us',
+        'about.php' => 'About',
+        'members.php' => 'Members',
         'events.php' => 'Events',
         'gallery.php' => 'Gallery',
-        'members.php' => 'Members',
         'contact.php' => 'Contact',
     ];
+    
+    if (isLoggedIn()) {
+        $dashboardLink = (getUserRole() === 'admin') ? 'admin/index.php' : 'member/index.php';
+        $navItems[$dashboardLink] = 'Dashboard';
+        $navItems['logout.php'] = 'Logout';
+    } else {
+        $navItems['signup.php'] = 'Join Us';
+        $navItems['login.php'] = 'Login';
+    }
     ?>
     <nav class="navbar" data-navbar aria-label="Primary navigation">
         <div class="logo-section">

@@ -5,23 +5,41 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `dhrupodi_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `dhrupodi_db`;
 
-CREATE TABLE `admins` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
-  `profile_image` varchar(255) DEFAULT NULL,
-  `role` enum('superadmin','editor') NOT NULL DEFAULT 'editor',
+  `role` enum('admin','member') NOT NULL DEFAULT 'member',
   `is_active` tinyint(1) NOT NULL DEFAULT '1',
   `last_login` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
+  KEY `role` (`role`),
   KEY `is_active` (`is_active`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `membership_applications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `department` varchar(100) NOT NULL,
+  `batch` varchar(50) NOT NULL,
+  `motivation_text` text,
+  `status` enum('pending','approved','rejected') NOT NULL DEFAULT 'pending',
+  `reviewed_by` int(11) DEFAULT NULL,
+  `admin_notes` text,
+  `reviewed_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `status` (`status`),
+  KEY `reviewed_by` (`reviewed_by`),
+  CONSTRAINT `membership_applications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `membership_applications_ibfk_2` FOREIGN KEY (`reviewed_by`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `website_settings` (
@@ -51,6 +69,7 @@ CREATE TABLE `member_categories` (
 
 CREATE TABLE `members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `slug` varchar(150) NOT NULL,
@@ -65,18 +84,19 @@ CREATE TABLE `members` (
   `instagram_url` varchar(255) DEFAULT NULL,
   `linkedin_url` varchar(255) DEFAULT NULL,
   `twitter_url` varchar(255) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `status` enum('active','alumni','hidden') NOT NULL DEFAULT 'active',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`),
   UNIQUE KEY `slug` (`slug`),
   KEY `category_id` (`category_id`),
   KEY `display_order` (`display_order`),
   KEY `status` (`status`),
   KEY `is_featured` (`is_featured`),
-  CONSTRAINT `members_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `member_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `members_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `member_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `members_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `events` (

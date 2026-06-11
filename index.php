@@ -1,4 +1,22 @@
 <?php
+require_once __DIR__ . '/config/database.php';
+
+$stmt = $pdo->prepare("SELECT * FROM events WHERE is_published = 1 AND status != 'cancelled' ORDER BY is_featured DESC, event_date ASC LIMIT 6");
+$stmt->execute();
+$homeEvents = $stmt->fetchAll();
+
+$stmt = $pdo->prepare("SELECT * FROM members WHERE status = 'active' ORDER BY display_order ASC LIMIT 11");
+$stmt->execute();
+$homeMembers = $stmt->fetchAll();
+
+$stmt = $pdo->prepare("SELECT * FROM achievements WHERE is_active = 1 ORDER BY display_order ASC LIMIT 4");
+$stmt->execute();
+$homeAchievements = $stmt->fetchAll();
+
+$stmt = $pdo->prepare("SELECT * FROM gallery_images WHERE is_published = 1 ORDER BY display_order ASC LIMIT 8");
+$stmt->execute();
+$homeGallery = $stmt->fetchAll();
+
 $pageTitle = "Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Welcome to Dhrupodi Dancers' Association of KUET - Celebrating the grace of tradition and the energy of movement.";
 $pageStylesheets = ['/Dhrupodi/css/pages/home.css']; 
@@ -22,7 +40,7 @@ require_once 'php/navbar.php';
             where tradition meets passion and rhythm <br>
             creates memories.
         </p>
-        <a href="/Dhrupodi/contact.php" class="btn-pill">
+        <a href="/Dhrupodi/signup.php" class="btn-pill">
             Join Us Today 
             <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
         </a>
@@ -86,50 +104,31 @@ require_once 'php/navbar.php';
         <div class="nav-arrow left"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg></div>
         
         <div class="events-grid">
+            <?php foreach ($homeEvents as $event): ?>
             <div class="event-card-pixel">
-                <div class="ec-date-strip"><span class="ec-month">MAY</span><span class="ec-day">15</span></div>
+                <div class="ec-date-strip">
+                    <span class="ec-month"><?= date('M', strtotime($event['event_date'])) ?></span>
+                    <span class="ec-day"><?= date('d', strtotime($event['event_date'])) ?></span>
+                </div>
                 <div class="ec-content">
-                    <div class="ec-img"><img src="/Dhrupodi/uploads/events/Event%201.jpg" alt="Event 1"></div>
+                    <div class="ec-img">
+                        <?php if($event['image_path']): ?>
+                            <img src="/Dhrupodi/<?= htmlspecialchars($event['image_path']) ?>" alt="<?= htmlspecialchars($event['title']) ?>">
+                        <?php else: ?>
+                            <img src="/Dhrupodi/images/Homepage/home%20face.png" alt="Event">
+                        <?php endif; ?>
+                    </div>
                     <div class="ec-info">
-                        <h4>Spring Performance</h4>
-                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Main Auditorium, KUET</div>
-                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 6:00 PM</div>
+                        <h4><?= htmlspecialchars($event['title']) ?></h4>
+                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> <?= htmlspecialchars($event['location'] ?? 'Venue TBA') ?></div>
+                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> <?= htmlspecialchars($event['event_time'] ?? 'Time TBA') ?></div>
                     </div>
                 </div>
             </div>
-            <div class="event-card-pixel">
-                <div class="ec-date-strip"><span class="ec-month">JUN</span><span class="ec-day">01</span></div>
-                <div class="ec-content">
-                    <div class="ec-img"><img src="/Dhrupodi/uploads/events/Event%202.jpg" alt="Event 2"></div>
-                    <div class="ec-info">
-                        <h4>Workshop Session</h4>
-                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Dance Studio, KUET</div>
-                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 4:00 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="event-card-pixel">
-                <div class="ec-date-strip"><span class="ec-month">JUN</span><span class="ec-day">20</span></div>
-                <div class="ec-content">
-                    <div class="ec-img"><img src="/Dhrupodi/uploads/events/Event%203.jpg" alt="Event 3"></div>
-                    <div class="ec-info">
-                        <h4>Annual Recital</h4>
-                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Open Air Venue, KUET</div>
-                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 6:30 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="event-card-pixel">
-                <div class="ec-date-strip"><span class="ec-month">JUL</span><span class="ec-day">10</span></div>
-                <div class="ec-content">
-                    <div class="ec-img"><img src="/Dhrupodi/uploads/events/Event%201.jpg" alt="Event 4"></div>
-                    <div class="ec-info">
-                        <h4>Cultural Exchange</h4>
-                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> KUET Campus</div>
-                        <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 5:00 PM</div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
+            <?php if (empty($homeEvents)): ?>
+                <div style="padding: 40px; text-align: center; color: var(--color-text-muted); width: 100%;">More exciting events coming soon!</div>
+            <?php endif; ?>
         </div>
 
         <div class="nav-arrow right"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
@@ -170,11 +169,12 @@ require_once 'php/navbar.php';
         <div class="nav-arrow left"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg></div>
         
         <div class="gallery-row">
-            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%201.jpg" alt="Gallery"></div>
-            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%202.jpg" alt="Gallery"></div>
-            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%203.jpg" alt="Gallery"></div>
-            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%201.jpg" alt="Gallery"></div>
-            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%202.jpg" alt="Gallery"></div>
+            <?php foreach ($homeGallery as $img): ?>
+                <div class="g-img-box"><img src="/Dhrupodi/<?= htmlspecialchars($img['image_path']) ?>" alt="Gallery"></div>
+            <?php endforeach; ?>
+            <?php if (empty($homeGallery)): ?>
+                <div style="padding: 40px; text-align: center; color: var(--color-text-muted); width: 100%;">Gallery updates coming soon.</div>
+            <?php endif; ?>
         </div>
 
         <div class="nav-arrow right"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
@@ -205,59 +205,40 @@ require_once 'php/navbar.php';
 
         <h3 class="m-subtitle">Executive Committee</h3>
         <div class="m-grid-exec" style="margin-bottom: 40px;">
+            <?php foreach ($homeMembers as $index => $m): if ($index >= 6) break; ?>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/President.jpg" onerror="this.src='/Dhrupodi/uploads/members/member1.jpg'" alt="President">
-                <div class="m-card-info"><h4>Raihan Ahmed</h4><p>President</p></div>
+                <?php if($m['image_path']): ?>
+                    <img src="/Dhrupodi/<?= htmlspecialchars($m['image_path']) ?>" onerror="this.src='/Dhrupodi/images/Homepage/home%20face.png'" alt="<?= htmlspecialchars($m['name']) ?>">
+                <?php else: ?>
+                    <img src="/Dhrupodi/images/Homepage/home%20face.png" alt="Member">
+                <?php endif; ?>
+                <div class="m-card-info"><h4><?= htmlspecialchars($m['name']) ?></h4><p><?= htmlspecialchars($m['role_title'] ?? 'Member') ?></p></div>
             </div>
-            <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/Vice-President.jpg" onerror="this.src='/Dhrupodi/uploads/members/member2.jpg'" alt="VP">
-                <div class="m-card-info"><h4>Nusrat Jahan</h4><p>Vice President</p></div>
-            </div>
-            <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/General%20Secretary.jpg" onerror="this.src='/Dhrupodi/uploads/members/member3.jpg'" alt="GS">
-                <div class="m-card-info"><h4>Sabbir Hossain</h4><p>General Secretary</p></div>
-            </div>
-            <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/Assistant%20Genaral%20Secratary.jpg" onerror="this.src='/Dhrupodi/uploads/members/member4.jpg'" alt="JS">
-                <div class="m-card-info"><h4>Noumita Sarkar</h4><p>Joint Secretary</p></div>
-            </div>
-            <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/Organising%20Secretary.jpg" onerror="this.src='/Dhrupodi/uploads/members/member5.jpg'" alt="Treasurer">
-                <div class="m-card-info"><h4>Fahim Rahman</h4><p>Treasurer</p></div>
-            </div>
-            <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/Organising%20Secretary%202.jpg" onerror="this.src='/Dhrupodi/uploads/members/member6.jpg'" alt="CS">
-                <div class="m-card-info"><h4>Tasmia Ahmed</h4><p>Cultural Secretary</p></div>
-            </div>
+            <?php endforeach; ?>
+            <?php if (empty($homeMembers)): ?>
+                <div style="padding: 40px; text-align: center; color: var(--color-text-muted); width: 100%;">Members will be updated soon.</div>
+            <?php endif; ?>
         </div>
 
+        <?php if(count($homeMembers) > 6): ?>
         <h3 class="m-subtitle">Core Members</h3>
         <div class="m-grid-core">
+            <?php foreach ($homeMembers as $index => $m): if ($index < 6) continue; if ($index >= 11) break; ?>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/member1.jpg" alt="Member">
-                <div class="m-card-info"><h4>Adib Hossain</h4><p>Member</p></div>
+                <?php if($m['image_path']): ?>
+                    <img src="/Dhrupodi/<?= htmlspecialchars($m['image_path']) ?>" onerror="this.src='/Dhrupodi/images/Homepage/home%20face.png'" alt="<?= htmlspecialchars($m['name']) ?>">
+                <?php else: ?>
+                    <img src="/Dhrupodi/images/Homepage/home%20face.png" alt="Member">
+                <?php endif; ?>
+                <div class="m-card-info"><h4><?= htmlspecialchars($m['name']) ?></h4><p><?= htmlspecialchars($m['role_title'] ?? 'Member') ?></p></div>
             </div>
-            <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/member2.jpg" alt="Member">
-                <div class="m-card-info"><h4>Ishrat Jahan</h4><p>Member</p></div>
-            </div>
-            <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/member3.jpg" alt="Member">
-                <div class="m-card-info"><h4>Mehedi Hasan</h4><p>Member</p></div>
-            </div>
-            <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/member4.jpg" alt="Member">
-                <div class="m-card-info"><h4>Anika Islam</h4><p>Member</p></div>
-            </div>
-            <div class="m-card-pixel">
-                <img src="/Dhrupodi/uploads/members/membe5.jpg" alt="Member">
-                <div class="m-card-info"><h4>Tanvir Ahmed</h4><p>Member</p></div>
-            </div>
+            <?php endforeach; ?>
             <a href="/Dhrupodi/members.php" class="m-card-more">
-                <span class="plus-num">+25</span>
+                <span class="plus-num">+</span>
                 <p>More Members</p>
             </a>
         </div>
+        <?php endif; ?>
     </div>
 
     <div style="text-align: center; margin-top: 40px; position: relative; z-index: 2;">
@@ -280,34 +261,18 @@ require_once 'php/navbar.php';
     </div>
 
     <div class="achievements-grid">
+        <?php foreach ($homeAchievements as $ach): ?>
         <div class="ach-box">
             <div class="ach-icon">
-                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v5H6v-2h2V7c0-1.1.9-2 2-2h2v7zm4 0h-2V7h-2v5h-2v-2h2V7c0-1.1.9-2 2-2h2v7z"/></svg>
+                <svg viewBox="0 0 24 24"><?= $ach['icon_svg'] ?></svg>
             </div>
-            <div class="ach-num">25+</div>
-            <div class="ach-label">Events Organized</div>
+            <div class="ach-num"><?= htmlspecialchars($ach['number_value']) ?></div>
+            <div class="ach-label"><?= htmlspecialchars($ach['label']) ?></div>
         </div>
-        <div class="ach-box">
-            <div class="ach-icon">
-                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-            </div>
-            <div class="ach-num">150+</div>
-            <div class="ach-label">Active Members</div>
-        </div>
-        <div class="ach-box">
-            <div class="ach-icon">
-                <svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 0 0 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM7 10.82C5.84 10.4 5 9.3 5 8V7h2v3.82zM19 8c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
-            </div>
-            <div class="ach-num">15+</div>
-            <div class="ach-label">Awards Won</div>
-        </div>
-        <div class="ach-box">
-            <div class="ach-icon">
-                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
-            </div>
-            <div class="ach-num">10+</div>
-            <div class="ach-label">Years of Journey</div>
-        </div>
+        <?php endforeach; ?>
+        <?php if (empty($homeAchievements)): ?>
+            <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--color-text-muted);">Milestones will be updated soon.</div>
+        <?php endif; ?>
     </div>
 </section>
 
