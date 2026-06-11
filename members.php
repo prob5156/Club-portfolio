@@ -6,7 +6,7 @@ require_once 'php/header.php';
 require_once 'php/navbar.php';
 
 
-$imageDir = __DIR__ . '/images/';
+$imageDir = __DIR__ . '/uploads/members/';
 $allFiles = array_diff(scandir($imageDir), array('.', '..'));
 
 $execKeywords = ['president', 'secretary', 'secratary', 'treasurer', 'executive', 'committee'];
@@ -105,10 +105,10 @@ function renderMCard($imageFile, $name, $role, $dept="Department of CSE", $batch
          data-dept="' . htmlspecialchars($dept) . '"
          data-batch="' . htmlspecialchars($batch) . '"
          data-bio="' . htmlspecialchars($bio) . '"
-         data-image="/Dhrupodi/images/' . htmlspecialchars($imageFile) . '">
+         data-image="/Dhrupodi/uploads/members/' . htmlspecialchars($imageFile) . '">
         
         <div class="m-img-wrapper">
-            <img src="/Dhrupodi/images/' . htmlspecialchars($imageFile) . '" alt="' . htmlspecialchars($name) . '" onerror="this.src=\'/Dhrupodi/images/Event 1.jpg\'">
+            <img src="/Dhrupodi/uploads/members/' . htmlspecialchars($imageFile) . '" alt="' . htmlspecialchars($name) . '" onerror="this.src=\'/Dhrupodi/uploads/events/Event 1.jpg\'">
         </div>
         
         <div class="m-info">

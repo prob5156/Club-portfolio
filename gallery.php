@@ -6,11 +6,11 @@ require_once 'php/header.php';
 require_once 'php/navbar.php';
 
 $images = [
-    '/Dhrupodi/images/Event 1.jpg',
-    '/Dhrupodi/images/Event 2.jpg',
-    '/Dhrupodi/images/Event 3.jpg',
-    '/Dhrupodi/images/dhrupodi-screenshot.png',
-    '/Dhrupodi/images/Event 1.jpg'
+    '/Dhrupodi/uploads/events/Event 1.jpg',
+    '/Dhrupodi/uploads/events/Event 2.jpg',
+    '/Dhrupodi/uploads/events/Event 3.jpg',
+    '/Dhrupodi/uploads/gallery/dhrupodi-screenshot.png',
+    '/Dhrupodi/uploads/events/Event 1.jpg'
 ];
 ?>
 
@@ -37,7 +37,7 @@ body {
     <div class="top-categories">
         
         <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 1.jpg" alt="Events"></div>
+            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 1.jpg" alt="Events"></div>
             <div class="cat-content">
                 <h3 class="cat-title">
                     <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
@@ -49,7 +49,7 @@ body {
         </div>
         
         <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 2.jpg" alt="Stage"></div>
+            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 2.jpg" alt="Stage"></div>
             <div class="cat-content">
                 <h3 class="cat-title">
                     <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg></span>
@@ -61,7 +61,7 @@ body {
         </div>
         
         <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 3.jpg" alt="Practice"></div>
+            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 3.jpg" alt="Practice"></div>
             <div class="cat-content">
                 <h3 class="cat-title">
                     <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="6.5"/></svg></span>
@@ -73,7 +73,7 @@ body {
         </div>
         
         <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 1.jpg" alt="Memories"></div>
+            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 1.jpg" alt="Memories"></div>
             <div class="cat-content">
                 <h3 class="cat-title">
                     <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
@@ -85,7 +85,7 @@ body {
         </div>
         
         <div class="cat-card">
-            <div class="cat-img-wrapper"><img src="/Dhrupodi/images/Event 2.jpg" alt="Videos"></div>
+            <div class="cat-img-wrapper"><img src="/Dhrupodi/uploads/events/Event 2.jpg" alt="Videos"></div>
             <div class="cat-content">
                 <h3 class="cat-title">
                     <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></span>

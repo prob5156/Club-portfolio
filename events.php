@@ -27,7 +27,7 @@ require_once 'php/navbar.php';
         
         <div class="e-card">
             <div class="e-card-img-box">
-                <img src="/Dhrupodi/images/Event 1.jpg" alt="Spring Performance">
+                <img src="/Dhrupodi/uploads/events/Event 1.jpg" alt="Spring Performance">
                 <div class="e-date-badge">
                     <span class="month">MAY</span>
                     <span class="day">15</span>
@@ -54,7 +54,7 @@ require_once 'php/navbar.php';
         
         <div class="e-card">
             <div class="e-card-img-box">
-                <img src="/Dhrupodi/images/Event 2.jpg" alt="Workshop Session">
+                <img src="/Dhrupodi/uploads/events/Event 2.jpg" alt="Workshop Session">
                 <div class="e-date-badge">
                     <span class="month">JUN</span>
                     <span class="day">01</span>
@@ -81,7 +81,7 @@ require_once 'php/navbar.php';
         
         <div class="e-card">
             <div class="e-card-img-box">
-                <img src="/Dhrupodi/images/Event 3.jpg" alt="Annual Recital">
+                <img src="/Dhrupodi/uploads/events/Event 3.jpg" alt="Annual Recital">
                 <div class="e-date-badge">
                     <span class="month">JUN</span>
                     <span class="day">20</span>
@@ -108,7 +108,7 @@ require_once 'php/navbar.php';
         
         <div class="e-card">
             <div class="e-card-img-box">
-                <img src="/Dhrupodi/images/Event 1.jpg" alt="Cultural Exchange">
+                <img src="/Dhrupodi/uploads/events/Event 1.jpg" alt="Cultural Exchange">
                 <div class="e-date-badge">
                     <span class="month">JUL</span>
                     <span class="day">10</span>

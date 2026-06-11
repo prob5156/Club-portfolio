@@ -89,7 +89,7 @@ require_once 'php/navbar.php';
             <div class="event-card-pixel">
                 <div class="ec-date-strip"><span class="ec-month">MAY</span><span class="ec-day">15</span></div>
                 <div class="ec-content">
-                    <div class="ec-img"><img src="/Dhrupodi/images/Event%201.jpg" alt="Event 1"></div>
+                    <div class="ec-img"><img src="/Dhrupodi/uploads/events/Event%201.jpg" alt="Event 1"></div>
                     <div class="ec-info">
                         <h4>Spring Performance</h4>
                         <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Main Auditorium, KUET</div>
@@ -100,7 +100,7 @@ require_once 'php/navbar.php';
             <div class="event-card-pixel">
                 <div class="ec-date-strip"><span class="ec-month">JUN</span><span class="ec-day">01</span></div>
                 <div class="ec-content">
-                    <div class="ec-img"><img src="/Dhrupodi/images/Event%202.jpg" alt="Event 2"></div>
+                    <div class="ec-img"><img src="/Dhrupodi/uploads/events/Event%202.jpg" alt="Event 2"></div>
                     <div class="ec-info">
                         <h4>Workshop Session</h4>
                         <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Dance Studio, KUET</div>
@@ -111,7 +111,7 @@ require_once 'php/navbar.php';
             <div class="event-card-pixel">
                 <div class="ec-date-strip"><span class="ec-month">JUN</span><span class="ec-day">20</span></div>
                 <div class="ec-content">
-                    <div class="ec-img"><img src="/Dhrupodi/images/Event%203.jpg" alt="Event 3"></div>
+                    <div class="ec-img"><img src="/Dhrupodi/uploads/events/Event%203.jpg" alt="Event 3"></div>
                     <div class="ec-info">
                         <h4>Annual Recital</h4>
                         <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Open Air Venue, KUET</div>
@@ -122,7 +122,7 @@ require_once 'php/navbar.php';
             <div class="event-card-pixel">
                 <div class="ec-date-strip"><span class="ec-month">JUL</span><span class="ec-day">10</span></div>
                 <div class="ec-content">
-                    <div class="ec-img"><img src="/Dhrupodi/images/Event%201.jpg" alt="Event 4"></div>
+                    <div class="ec-img"><img src="/Dhrupodi/uploads/events/Event%201.jpg" alt="Event 4"></div>
                     <div class="ec-info">
                         <h4>Cultural Exchange</h4>
                         <div class="ec-meta"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> KUET Campus</div>
@@ -170,11 +170,11 @@ require_once 'php/navbar.php';
         <div class="nav-arrow left"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg></div>
         
         <div class="gallery-row">
-            <div class="g-img-box"><img src="/Dhrupodi/images/Event%201.jpg" alt="Gallery"></div>
-            <div class="g-img-box"><img src="/Dhrupodi/images/Event%202.jpg" alt="Gallery"></div>
-            <div class="g-img-box"><img src="/Dhrupodi/images/Event%203.jpg" alt="Gallery"></div>
-            <div class="g-img-box"><img src="/Dhrupodi/images/Event%201.jpg" alt="Gallery"></div>
-            <div class="g-img-box"><img src="/Dhrupodi/images/Event%202.jpg" alt="Gallery"></div>
+            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%201.jpg" alt="Gallery"></div>
+            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%202.jpg" alt="Gallery"></div>
+            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%203.jpg" alt="Gallery"></div>
+            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%201.jpg" alt="Gallery"></div>
+            <div class="g-img-box"><img src="/Dhrupodi/uploads/events/Event%202.jpg" alt="Gallery"></div>
         </div>
 
         <div class="nav-arrow right"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
@@ -206,27 +206,27 @@ require_once 'php/navbar.php';
         <h3 class="m-subtitle">Executive Committee</h3>
         <div class="m-grid-exec" style="margin-bottom: 40px;">
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/President.jpg" onerror="this.src='/Dhrupodi/images/member1.jpg'" alt="President">
+                <img src="/Dhrupodi/uploads/members/President.jpg" onerror="this.src='/Dhrupodi/uploads/members/member1.jpg'" alt="President">
                 <div class="m-card-info"><h4>Raihan Ahmed</h4><p>President</p></div>
             </div>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/Vice-President.jpg" onerror="this.src='/Dhrupodi/images/member2.jpg'" alt="VP">
+                <img src="/Dhrupodi/uploads/members/Vice-President.jpg" onerror="this.src='/Dhrupodi/uploads/members/member2.jpg'" alt="VP">
                 <div class="m-card-info"><h4>Nusrat Jahan</h4><p>Vice President</p></div>
             </div>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/General%20Secretary.jpg" onerror="this.src='/Dhrupodi/images/member3.jpg'" alt="GS">
+                <img src="/Dhrupodi/uploads/members/General%20Secretary.jpg" onerror="this.src='/Dhrupodi/uploads/members/member3.jpg'" alt="GS">
                 <div class="m-card-info"><h4>Sabbir Hossain</h4><p>General Secretary</p></div>
             </div>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/Assistant%20Genaral%20Secratary.jpg" onerror="this.src='/Dhrupodi/images/member4.jpg'" alt="JS">
+                <img src="/Dhrupodi/uploads/members/Assistant%20Genaral%20Secratary.jpg" onerror="this.src='/Dhrupodi/uploads/members/member4.jpg'" alt="JS">
                 <div class="m-card-info"><h4>Noumita Sarkar</h4><p>Joint Secretary</p></div>
             </div>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/Organising%20Secretary.jpg" onerror="this.src='/Dhrupodi/images/member5.jpg'" alt="Treasurer">
+                <img src="/Dhrupodi/uploads/members/Organising%20Secretary.jpg" onerror="this.src='/Dhrupodi/uploads/members/member5.jpg'" alt="Treasurer">
                 <div class="m-card-info"><h4>Fahim Rahman</h4><p>Treasurer</p></div>
             </div>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/Organising%20Secretary%202.jpg" onerror="this.src='/Dhrupodi/images/member6.jpg'" alt="CS">
+                <img src="/Dhrupodi/uploads/members/Organising%20Secretary%202.jpg" onerror="this.src='/Dhrupodi/uploads/members/member6.jpg'" alt="CS">
                 <div class="m-card-info"><h4>Tasmia Ahmed</h4><p>Cultural Secretary</p></div>
             </div>
         </div>
@@ -234,23 +234,23 @@ require_once 'php/navbar.php';
         <h3 class="m-subtitle">Core Members</h3>
         <div class="m-grid-core">
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/member1.jpg" alt="Member">
+                <img src="/Dhrupodi/uploads/members/member1.jpg" alt="Member">
                 <div class="m-card-info"><h4>Adib Hossain</h4><p>Member</p></div>
             </div>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/member2.jpg" alt="Member">
+                <img src="/Dhrupodi/uploads/members/member2.jpg" alt="Member">
                 <div class="m-card-info"><h4>Ishrat Jahan</h4><p>Member</p></div>
             </div>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/member3.jpg" alt="Member">
+                <img src="/Dhrupodi/uploads/members/member3.jpg" alt="Member">
                 <div class="m-card-info"><h4>Mehedi Hasan</h4><p>Member</p></div>
             </div>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/member4.jpg" alt="Member">
+                <img src="/Dhrupodi/uploads/members/member4.jpg" alt="Member">
                 <div class="m-card-info"><h4>Anika Islam</h4><p>Member</p></div>
             </div>
             <div class="m-card-pixel">
-                <img src="/Dhrupodi/images/member5.jpg" alt="Member">
+                <img src="/Dhrupodi/uploads/members/membe5.jpg" alt="Member">
                 <div class="m-card-info"><h4>Tanvir Ahmed</h4><p>Member</p></div>
             </div>
             <a href="/Dhrupodi/members.php" class="m-card-more">
