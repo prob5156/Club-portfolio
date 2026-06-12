@@ -20,10 +20,20 @@
         $navItems['login.php'] = 'Login';
     }
     ?>
+    <?php
+    if (!isset($globalSettings)) {
+        $stmtSet = $pdo->query("SELECT setting_key, setting_value FROM website_settings");
+        $globalSettings = $stmtSet->fetchAll(PDO::FETCH_KEY_PAIR);
+    }
+    $siteTitle = $globalSettings['site_title'] ?? "Dhrupodi Dancers' Association";
+    // Optional: Extract subtitle if present using a simple logic, e.g., splitting by ' - ' or just using the full title
+    $titleParts = explode(' - ', $siteTitle, 2);
+    ?>
+    <!-- Navbar -->
     <nav class="navbar" data-navbar aria-label="Primary navigation">
         <div class="logo-section">
             <img src="https://graph.facebook.com/dhrupodidancerskuet/picture?type=large" alt="Dhrupodi Logo" class="navbar-logo">
-            <h1 class="site-title">Dhrupodi Dancers'<br><span class="subtitle">Association of KUET</span></h1>
+            <h1 class="site-title"><?= htmlspecialchars($titleParts[0]) ?><?php if(isset($titleParts[1])): ?><br><span class="subtitle"><?= htmlspecialchars($titleParts[1]) ?></span><?php endif; ?></h1>
         </div>
 
         <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">

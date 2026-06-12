@@ -1,5 +1,6 @@
 <?php
 // member/includes/topbar.php
+// execute query
 $stmt = $pdo->prepare("SELECT name FROM members WHERE user_id = ?");
 $stmt->execute([$_SESSION['user_id']]);
 $memberName = $stmt->fetchColumn() ?: 'Member';

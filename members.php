@@ -108,6 +108,7 @@ body {
         <div class="members-scroll-container exec-scroll">
             <div class="members-grid">
                 <?php 
+                // Loop through items
                 foreach($execs as $exec) {
                     renderMCard($exec);
                 }
@@ -133,6 +134,7 @@ body {
         <div class="members-scroll-container core-scroll">
             <div class="members-grid">
                 <?php 
+                /* For each item */
                 foreach($cores as $core) {
                     renderMCard($core);
                 }

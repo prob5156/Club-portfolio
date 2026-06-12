@@ -13,6 +13,7 @@ require_once 'php/navbar.php';
         <div class="hero-separator">
             <svg viewBox="0 0 100 10" width="80" height="12"><path d="M50 0L55 5L100 5L100 6L55 6L50 10L45 6L0 6L0 5L45 5Z" fill="#D4AF37"/></svg>
         </div>
+        <!-- Hero section -->
         <p class="hero-subtitle">UNITED BY PASSION, DRIVEN BY TRADITION</p>
     </div>
 </div>

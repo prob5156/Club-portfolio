@@ -4,20 +4,24 @@ requireAdmin();
 
 $id = (int)($_GET['id'] ?? 0);
 if (!$id) {
+    // Redirect after success
     header("Location: index.php");
     exit();
 }
 
+/* Fetch data */
 $stmt = $pdo->prepare("SELECT * FROM events WHERE id = ?");
 $stmt->execute([$id]);
 $event = $stmt->fetch();
 
 if (!$event) {
+    // redirect user
     header("Location: index.php");
     exit();
 }
 
 $error = '';
+/* Validate form input */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title'] ?? '');
     $event_date = trim($_POST['event_date'] ?? '');
@@ -83,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]);
 
                 $_SESSION['toast'] = ['type' => 'success', 'message' => 'Event updated successfully!'];
+                /* Page redirect */
                 header("Location: index.php");
                 exit();
             } catch (Exception $e) {

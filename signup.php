@@ -2,6 +2,7 @@
 // signup.php
 require_once __DIR__ . '/config/auth.php';
 
+/* check if logged in */
 if (isLoggedIn()) {
     if (getUserRole() === 'admin') header("Location: /Dhrupodi/admin/index.php");
     else header("Location: /Dhrupodi/member/index.php");
@@ -12,6 +13,7 @@ $error = '';
 $emailExistsError = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Collect form data
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
@@ -20,17 +22,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $batch = trim($_POST['batch'] ?? '') ?: null;
     $phone = trim($_POST['phone'] ?? '') ?: null;
     
+    // validate
     if (!$name || !$email || !$password || !$confirm_password) {
         $error = "Name, Email, and Password are required fields.";
     } elseif ($password !== $confirm_password) {
         $error = "Passwords do not match.";
     } else {
+        /* Fetch data */
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->execute([$email]);
         if ($stmt->fetch()) {
             $emailExistsError = true;
         } else {
-            // Handle Profile Picture
+            /* Handle Profile Picture */
             $image_path = null;
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
                 $fileTmp = $_FILES['image']['tmp_name'];
@@ -47,11 +51,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if (!array_key_exists($mimeType, $allowedMimes)) {
                         $error = "Only JPG, PNG, and WEBP images are allowed.";
                     } else {
+                        // generate filename
                         $extension = $allowedMimes[$mimeType];
                         $uploadDir = __DIR__ . '/uploads/members/';
                         if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
                         
                         $filename = bin2hex(random_bytes(16)) . '.' . $extension;
+                        // upload it
                         if (move_uploaded_file($fileTmp, $uploadDir . $filename)) {
                             $image_path = 'uploads/members/' . $filename;
                         } else {
@@ -65,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 try {
                     $pdo->beginTransaction();
 
+                    /* insert user */
                     $hash = password_hash($password, PASSWORD_DEFAULT);
                     $stmt = $pdo->prepare("INSERT INTO users (email, password_hash, role) VALUES (?, ?, 'member')");
                     $stmt->execute([$email, $hash]);
@@ -75,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $cat = $catStmt->fetch();
                     $categoryId = $cat ? $cat['id'] : null;
 
+                    // if no category create one
                     if (!$categoryId) {
                         $insCatStmt = $pdo->prepare("INSERT INTO member_categories (name, slug) VALUES (?, ?)");
                         $insCatStmt->execute(['General', 'general']);
@@ -90,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $pdo->commit();
                     
-                    // Auto login
+                    /* auto login the new user */
                     $_SESSION['user_id'] = $userId;
                     $_SESSION['role'] = 'member';
                     header("Location: /Dhrupodi/member/index.php");

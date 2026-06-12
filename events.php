@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/config/database.php';
 
+/* get all published events */
+/* Run sql */
 $stmt = $pdo->prepare("SELECT * FROM events WHERE is_published = 1 AND status != 'cancelled' ORDER BY is_featured DESC, event_date ASC");
 $stmt->execute();
 $allEvents = $stmt->fetchAll();
@@ -13,6 +15,7 @@ require_once 'php/navbar.php';
 ?>
 
 <div class="events-hero">
+    <!-- Hero section -->
     <h1 class="hero-title">OUR EVENTS</h1>
     <div class="hero-divider">
         <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>

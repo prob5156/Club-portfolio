@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]);
 
                 $_SESSION['toast'] = ['type' => 'success', 'message' => 'Event added successfully!'];
+                /* Go back */
                 header("Location: index.php");
                 exit();
             } catch (Exception $e) {

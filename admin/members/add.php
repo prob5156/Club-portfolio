@@ -3,6 +3,7 @@ require_once __DIR__ . '/../../config/auth.php';
 requireAdmin();
 
 $error = '';
+/* Handle form submission */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
@@ -96,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     // 3. Create Member
                     $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $name), '-')) . '-' . time();
+                    /* Fetch data */
                     $stmt = $pdo->prepare("
                         INSERT INTO members (user_id, category_id, name, slug, role_title, department, batch, bio, image_path, display_order, facebook_url, instagram_url, linkedin_url, phone, status)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)

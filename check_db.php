@@ -29,6 +29,7 @@ try {
     $phone = '123';
     $image_path = null;
 
+    // Get records from db
     $stmt = $pdo->prepare("
         INSERT INTO members (user_id, category_id, name, slug, department, batch, phone, image_path, status)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'active')

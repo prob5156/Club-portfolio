@@ -3,6 +3,7 @@ require_once __DIR__ . '/config/database.php';
 
 $categorySlug = isset($_GET['category']) ? $_GET['category'] : '';
 
+/* Connect database */
 $stmt = $pdo->prepare("SELECT * FROM gallery_categories WHERE slug = ? AND is_active = 1");
 $stmt->execute([$categorySlug]);
 $currentCat = $stmt->fetch();
@@ -12,6 +13,7 @@ if (!$currentCat) {
     exit();
 }
 
+// Get records from db
 $stmt = $pdo->prepare("SELECT * FROM gallery_images WHERE category_id = ? AND is_published = 1 ORDER BY display_order ASC");
 $stmt->execute([$currentCat['id']]);
 $catImages = $stmt->fetchAll();

@@ -4,6 +4,7 @@ requireAdmin();
 
 $id = (int)($_GET['id'] ?? 0);
 if (!$id) {
+    /* Go back */
     header("Location: index.php");
     exit();
 }
@@ -13,11 +14,13 @@ $stmt->execute([$id]);
 $member = $stmt->fetch();
 
 if (!$member) {
+    // Redirect after success
     header("Location: index.php");
     exit();
 }
 
 $error = '';
+// Check post request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
@@ -38,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Name and Email are required.";
     } else {
         // Check email uniqueness across other users
+        /* Connect database */
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
         $stmt->execute([$email, $member['user_id']]);
         if ($stmt->fetch()) {
@@ -92,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $pdo->beginTransaction();
 
                     // 1. Update User Email
+                    // db call
                     $stmt = $pdo->prepare("UPDATE users SET email = ? WHERE id = ?");
                     $stmt->execute([$email, $member['user_id']]);
 
@@ -111,6 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $pdo->commit();
                     $_SESSION['toast'] = ['type' => 'success', 'message' => 'Member updated successfully!'];
+                    /* Go back */
                     header("Location: index.php");
                     exit();
                 } catch (Exception $e) {

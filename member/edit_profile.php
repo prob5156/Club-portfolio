@@ -6,6 +6,7 @@ $stmt->execute([$_SESSION['user_id']]);
 $member = $stmt->fetch();
 
 $error = '';
+// Form validation
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $phone = trim($_POST['phone'] ?? '') ?: null;
@@ -59,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 try {
                     $pdo->beginTransaction();
 
+                    // execute query
                     $stmt = $pdo->prepare("UPDATE users SET email = ? WHERE id = ?");
                     $stmt->execute([$email, $_SESSION['user_id']]);
 
@@ -71,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $pdo->commit();
                     $_SESSION['toast'] = ['type' => 'success', 'message' => 'Profile updated successfully!'];
+                    /* Page redirect */
                     header("Location: index.php");
                     exit();
                 } catch (Exception $e) {

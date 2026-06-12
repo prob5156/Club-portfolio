@@ -1,4 +1,37 @@
 <?php
+// contact.php
+require_once __DIR__ . '/config/database.php';
+
+$successMsg = '';
+$errorMsg = '';
+
+/* process contact form submission */
+// Check post request
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $phone = trim($_POST['phone'] ?? '');
+    $subject = trim($_POST['subject'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+
+    // basic validation
+    if (!$name || !$email || !$subject || !$message) {
+        $errorMsg = "Please fill in all required fields.";
+    } else {
+        if ($phone) {
+            $message = "Phone: " . $phone . "\n\n" . $message;
+        }
+        try {
+            // insert to db
+            $stmt = $pdo->prepare("INSERT INTO contact_messages (name, email, subject, message, status) VALUES (?, ?, ?, ?, 'unread')");
+            $stmt->execute([$name, $email, $subject, $message]);
+            $successMsg = "Your message has been sent successfully! We will get back to you soon.";
+        } catch (Exception $e) {
+            $errorMsg = "Something went wrong. Please try again later.";
+        }
+    }
+}
+
 $pageTitle = "Contact - Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Get in touch with Dhrupodi Dancers' Association of KUET. Send us a message or find our contact details.";
 $pageStylesheets = ['/Dhrupodi/css/pages/contact.css'];
@@ -11,6 +44,7 @@ require_once 'php/navbar.php';
     <div class="hero-divider">
         <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
     </div>
+    <!-- Hero section -->
     <div class="hero-subtitle">Let's Create Something Beautiful Together</div>
 </div>
 
@@ -90,21 +124,33 @@ require_once 'php/navbar.php';
             <div class="c-divider">
                 <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
             </div>
-            <form class="c-form">
+            
+            <?php if ($successMsg): ?>
+                <div style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+                    <?= htmlspecialchars($successMsg) ?>
+                </div>
+            <?php endif; ?>
+            <?php if ($errorMsg): ?>
+                <div style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+                    <?= htmlspecialchars($errorMsg) ?>
+                </div>
+            <?php endif; ?>
+
+            <form class="c-form" method="POST" action="">
                 <div class="form-group">
-                    <input type="text" class="c-input" placeholder="Your Name" required>
+                    <input type="text" name="name" class="c-input" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="c-input" placeholder="Your Email" required>
+                    <input type="email" name="email" class="c-input" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" class="c-input" placeholder="Your Phone">
+                    <input type="tel" name="phone" class="c-input" placeholder="Your Phone">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="c-input" placeholder="Subject" required>
+                    <input type="text" name="subject" class="c-input" placeholder="Subject" required>
                 </div>
                 <div class="form-group full-width">
-                    <textarea class="c-input" placeholder="Your Message" required></textarea>
+                    <textarea name="message" class="c-input" placeholder="Your Message" required rows="5"></textarea>
                 </div>
                 <button type="submit" class="c-submit">
                     SEND MESSAGE

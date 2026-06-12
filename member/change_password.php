@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/header.php';
 
 $error = '';
+// Check post request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $current_password = $_POST['current_password'] ?? '';
     $new_password = $_POST['new_password'] ?? '';

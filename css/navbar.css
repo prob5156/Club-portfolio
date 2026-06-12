@@ -1,3 +1,4 @@
+/* Menu */
 .navbar {
     position: fixed;
     top: 25px;
@@ -38,6 +39,7 @@
     min-width: 0;
 }
 
+/* Navbar styles */
 .navbar-logo {
     width: 56px;
     height: 56px;
@@ -213,6 +215,7 @@
     transform: translateY(6px) rotate(45deg);
 }
 
+/* Menu */
 .navbar.nav-open .nav-toggle-lines span:nth-child(2) {
     opacity: 0;
 }
@@ -302,6 +305,7 @@
 }
 
 @media (max-width: 640px) {
+    /* Menu */
     .navbar {
         padding: 0.8rem 0.85rem;
         width: 95%;

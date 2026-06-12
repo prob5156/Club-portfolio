@@ -3,12 +3,13 @@
 require_once __DIR__ . '/session.php';
 require_once __DIR__ . '/database.php';
 
-// Handle Auto-login
+// check if user has remember me cookie
 if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
     $cookieParts = explode(':', $_COOKIE['remember_me']);
     if (count($cookieParts) === 2) {
         list($selector, $validator) = $cookieParts;
         
+        /* query token from db */
         $stmt = $pdo->prepare("
             SELECT ut.validator_hash, u.id AS user_id, u.role 
             FROM user_tokens ut 
@@ -22,6 +23,7 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
             $_SESSION['user_id'] = $tokenRecord['user_id'];
             $_SESSION['role'] = $tokenRecord['role'];
             
+            // Redirect based on role
             if ($tokenRecord['role'] === 'admin') {
                 header("Location: /Dhrupodi/admin/index.php");
             } else {
@@ -29,12 +31,13 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_me'])) {
             }
             exit();
         } else {
-            // Invalid or expired cookie
+            // delete expired cookie
             setcookie('remember_me', '', time() - 3600, '/');
         }
     }
 }
 
+/* return true if user logged in */
 function isLoggedIn() {
     return isset($_SESSION['user_id']);
 }
@@ -43,6 +46,7 @@ function getUserRole() {
     return $_SESSION['role'] ?? null;
 }
 
+// Check login
 function requireLogin() {
     if (!isLoggedIn()) {
         header("Location: /Dhrupodi/login.php");
@@ -50,7 +54,9 @@ function requireLogin() {
     }
 }
 
+/* admin only access */
 function requireAdmin() {
+    // check session
     requireLogin();
     $role = getUserRole();
     if ($role !== 'admin') {
@@ -60,6 +66,7 @@ function requireAdmin() {
 }
 
 function requireMember() {
+    // Check login status
     requireLogin();
     $role = getUserRole();
     // Allow only members

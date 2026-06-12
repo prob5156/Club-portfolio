@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Close modal on outside click
+    /* Handle click */
     window.addEventListener('click', (e) => {
         if (e.target === window.AdminModal.overlay) {
             window.AdminModal.hide();

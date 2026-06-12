@@ -1,7 +1,10 @@
 <?php
+// index.php
 require_once __DIR__ . '/config/auth.php';
 require_once __DIR__ . '/config/database.php';
 
+/* check login status */
+/* Verify user */
 if (isLoggedIn()) {
     if (getUserRole() === 'admin') {
         header("Location: /Dhrupodi/admin/index.php");
@@ -11,21 +14,31 @@ if (isLoggedIn()) {
     exit();
 }
 
+// Fetch latest events
 $stmt = $pdo->prepare("SELECT * FROM events WHERE is_published = 1 AND status != 'cancelled' ORDER BY is_featured DESC, event_date ASC LIMIT 6");
 $stmt->execute();
 $homeEvents = $stmt->fetchAll();
 
+/* Fetch data */
 $stmt = $pdo->prepare("SELECT * FROM members WHERE status = 'active' ORDER BY display_order ASC LIMIT 11");
 $stmt->execute();
 $homeMembers = $stmt->fetchAll();
 
+/* Get achievements */
+// db call
 $stmt = $pdo->prepare("SELECT * FROM achievements WHERE is_active = 1 ORDER BY display_order ASC LIMIT 4");
 $stmt->execute();
 $homeAchievements = $stmt->fetchAll();
 
+// load gallery images for homepage
 $stmt = $pdo->prepare("SELECT * FROM gallery_images WHERE is_published = 1 ORDER BY display_order ASC LIMIT 8");
 $stmt->execute();
 $homeGallery = $stmt->fetchAll();
+
+/* Fetch slider data */
+$stmt = $pdo->prepare("SELECT * FROM home_slider WHERE is_active = 1 ORDER BY display_order ASC LIMIT 5");
+$stmt->execute();
+$homeSlider = $stmt->fetchAll();
 
 $pageTitle = "Dhrupodi Dancers' Association - KUET";
 $pageDescription = "Welcome to Dhrupodi Dancers' Association of KUET - Celebrating the grace of tradition and the energy of movement.";
@@ -38,24 +51,62 @@ require_once 'php/navbar.php';
     document.body.classList.add('home-page');
 </script>
 
-
-<section class="hero-pixel">
-    <div class="hero-content">
-        <h1 class="hero-title">
-            CELEBRATING THE GRACE <br>OF TRADITION <br>
-            <span class="gold">AND THE ENERGY <br>OF MOVEMENT</span>
-        </h1>
-        <p class="hero-subtitle">
-            Dhrupodi Dancers' Association of KUET is a platform <br>
-            where tradition meets passion and rhythm <br>
-            creates memories.
-        </p>
-        <a href="/Dhrupodi/signup.php" class="btn-pill">
-            Join Us Today 
-            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-        </a>
+<!-- Hero section with slider -->
+<?php if (!empty($homeSlider)): ?>
+    <div class="home-slider-container" style="position:relative; width:100%; height:100vh; overflow:hidden;">
+        <?php foreach ($homeSlider as $index => $slide): ?>
+            <section class="hero-pixel slide-item <?= $index === 0 ? 'active' : '' ?>" style="position:<?= $index === 0 ? 'relative' : 'absolute' ?>; top:0; left:0; width:100%; height:100%; opacity:<?= $index === 0 ? '1' : '0' ?>; transition: opacity 1s ease-in-out; <?= $slide['image_path'] ? 'background-image: url(/Dhrupodi/' . htmlspecialchars($slide['image_path']) . ');' : '' ?> background-size: cover; background-position: center; z-index: <?= $index === 0 ? '1' : '0' ?>;">
+                <div class="hero-content" style="z-index:2; position:relative; background: rgba(0,0,0,0.4); padding: 40px; border-radius: 10px;">
+                    <h1 class="hero-title"><?= $slide['title'] ?></h1>
+                    <?php if ($slide['subtitle']): ?>
+                        <p class="hero-subtitle"><?= $slide['subtitle'] ?></p>
+                    <?php endif; ?>
+                    <?php if ($slide['button_text']): ?>
+                        <a href="<?= htmlspecialchars($slide['button_link'] ?: '#') ?>" class="btn-pill">
+                            <?= htmlspecialchars($slide['button_text']) ?>
+                            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </section>
+        <?php endforeach; ?>
+        <?php if (count($homeSlider) > 1): ?>
+            <script>
+                // simple slider script
+                document.addEventListener("DOMContentLoaded", function() {
+                    let slides = document.querySelectorAll('.slide-item');
+                    let currentSlide = 0;
+                    setInterval(() => {
+                        slides[currentSlide].style.opacity = '0';
+                        slides[currentSlide].style.zIndex = '0';
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        slides[currentSlide].style.opacity = '1';
+                        slides[currentSlide].style.zIndex = '1';
+                    }, 5000);
+                });
+            </script>
+        <?php endif; ?>
     </div>
-</section>
+<?php else: ?>
+    <!-- Hero section -->
+    <section class="hero-pixel">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                CELEBRATING THE GRACE <br>OF TRADITION <br>
+                <span class="gold">AND THE ENERGY <br>OF MOVEMENT</span>
+            </h1>
+            <p class="hero-subtitle">
+                Dhrupodi Dancers' Association of KUET is a platform <br>
+                where tradition meets passion and rhythm <br>
+                creates memories.
+            </p>
+            <a href="/Dhrupodi/signup.php" class="btn-pill">
+                Join Us Today 
+                <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </a>
+        </div>
+    </section>
+<?php endif; ?>
 
 
 <section class="home-section">

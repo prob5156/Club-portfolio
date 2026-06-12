@@ -14,6 +14,7 @@ if ($search) {
 }
 
 $query .= " ORDER BY m.display_order ASC, m.name ASC";
+/* Fetch data */
 $stmt = $pdo->prepare($query);
 $stmt->execute($params);
 $members = $stmt->fetchAll();

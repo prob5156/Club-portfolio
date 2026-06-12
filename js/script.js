@@ -1,3 +1,4 @@
+// Initialize script
 document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.querySelector('[data-navbar]');
     const toggleButton = document.querySelector('.nav-toggle');
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         navLinks.querySelectorAll('.nav-btn').forEach(link => {
+            /* Handle click */
             link.addEventListener('click', closeMenu);
         });
 
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     document.querySelectorAll('a.nav-btn[href^="#"]').forEach(link => {
+        // click event
         link.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
@@ -59,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     document.querySelectorAll('.cta-btn').forEach(btn => {
+        /* Handle click */
         btn.addEventListener('click', function (e) {
             const href = this.getAttribute('href') || '';
             const contactSection = document.getElementById('contact');

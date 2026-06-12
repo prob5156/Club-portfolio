@@ -25,6 +25,7 @@ $totalPages = ceil($totalEvents / $perPage);
 
 // Fetch records
 $query = "SELECT * FROM events WHERE $where ORDER BY event_date DESC, id DESC LIMIT $perPage OFFSET $offset";
+// db call
 $stmt = $pdo->prepare($query);
 $stmt->execute($params);
 $events = $stmt->fetchAll();

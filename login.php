@@ -2,6 +2,7 @@
 // login.php
 require_once __DIR__ . '/config/auth.php';
 
+/* If user is already logged in, redirect them */
 if (isLoggedIn()) {
     if (getUserRole() === 'admin') header("Location: /Dhrupodi/admin/index.php");
     else header("Location: /Dhrupodi/member/index.php");
@@ -9,7 +10,9 @@ if (isLoggedIn()) {
 }
 
 $error = '';
+/* Handle form submission */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // get form data
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
 
@@ -18,12 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
+        // Check password match
         if ($user && password_verify($password, $user['password_hash'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
             $pdo->prepare("UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?")->execute([$user['id']]);
 
-            // Handle Remember Me
+            /* Handle Remember Me logic */
             if (isset($_POST['remember_me'])) {
                 $selector = bin2hex(random_bytes(16));
                 $validator = bin2hex(random_bytes(32));
@@ -34,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $pdo->prepare("INSERT INTO user_tokens (user_id, selector, validator_hash, expires_at) VALUES (?, ?, ?, ?)");
                 $stmt->execute([$user['id'], $selector, $validatorHash, $expiresAt->format('Y-m-d H:i:s')]);
                 
+                // set cookie
                 $cookieValue = $selector . ':' . $validator;
                 setcookie('remember_me', $cookieValue, [
                     'expires' => $expiresAt->getTimestamp(),
@@ -45,8 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             if ($user['role'] === 'admin') {
+                // redirect user
                 header("Location: /Dhrupodi/admin/index.php");
             } else {
+                /* Page redirect */
                 header("Location: /Dhrupodi/member/index.php");
             }
             exit();
