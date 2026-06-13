@@ -46,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$error) {
         try {
             // Get records from db
-            $stmt = $pdo->prepare("INSERT INTO gallery_images (category_id, title, image_path, thumbnail_path, is_featured, is_published, display_order) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$category_id, $title, $image_path, $image_path, $is_featured, $is_published, $display_order]);
+            $stmt = $pdo->prepare("INSERT INTO gallery_images (category_id, title, image_path, is_featured, is_published, display_order) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$category_id, $title, $image_path, $is_featured, $is_published, $display_order]);
             $_SESSION['toast'] = ['type' => 'success', 'message' => 'Image added successfully!'];
             header("Location: images.php?category_id=$category_id");
             exit();

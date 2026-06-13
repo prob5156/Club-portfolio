@@ -65,8 +65,8 @@ require_once __DIR__ . '/../includes/header.php';
                 <?php foreach ($items as $item): ?>
                     <div style="background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
                         <div style="height: 150px; background: #000; display:flex; align-items:center; justify-content:center;">
-                            <?php if ($item['thumbnail_path'] || $item['image_path']): ?>
-                                <img src="/Dhrupodi/<?= htmlspecialchars($item['thumbnail_path'] ?: $item['image_path']) ?>" alt="Image" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                            <?php if ($item['image_path']): ?>
+                                <img src="/Dhrupodi/<?= htmlspecialchars($item['image_path']) ?>" alt="Image" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                             <?php else: ?>
                                 <span style="color:var(--color-text-muted);">No Image</span>
                             <?php endif; ?>

@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$error) {
         try {
             // db call
-            $stmt = $pdo->prepare("UPDATE gallery_images SET title = ?, image_path = ?, thumbnail_path = ?, is_featured = ?, is_published = ?, display_order = ? WHERE id = ?");
-            $stmt->execute([$title, $image_path, $image_path, $is_featured, $is_published, $display_order, $id]);
+            $stmt = $pdo->prepare("UPDATE gallery_images SET title = ?, image_path = ?, is_featured = ?, is_published = ?, display_order = ? WHERE id = ?");
+            $stmt->execute([$title, $image_path, $is_featured, $is_published, $display_order, $id]);
             $_SESSION['toast'] = ['type' => 'success', 'message' => 'Image updated successfully!'];
             header("Location: images.php?category_id=$category_id");
             exit();
